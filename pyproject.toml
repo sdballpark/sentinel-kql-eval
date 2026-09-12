@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "Measured evaluation of natural-language to KQL generation for security questions"
 requires-python = ">=3.12"
 dependencies = [
-    "pyyaml>=6.0",
     "pydantic>=2.10",
     "httpx>=0.28",
 ]
