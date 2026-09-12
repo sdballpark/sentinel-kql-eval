@@ -1,0 +1,53 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Model weights — never commit
+models/
+checkpoints/
+weights/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+*.onnx
+
+# Data
+data/*
+!data/README.md
+datasets/
+
+# Vector stores
+qdrant_storage/
+chroma/
+*.faiss
+*.index
+
+# Derived / regenerable
+work/
+outputs/
+runs/
+logs/
+*.log
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Project overrides — corpus and run artifacts are committed on purpose
+!data/corpus/
+!data/corpus/**
+!data/fixtures/
+!data/fixtures/**
+!runs/
+!runs/**
