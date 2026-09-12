@@ -1,0 +1,126 @@
+{
+  "corpus_version": "1.0.0",
+  "items": 22,
+  "generated_at": "20260912T004711Z",
+  "baselines": [
+    {
+      "model": "bare-table",
+      "execution_rate": 1.0,
+      "strict_accuracy": 0.0,
+      "semantic_accuracy": 0.0,
+      "grades": {
+        "exact": 0,
+        "unordered": 0,
+        "extra_columns": 0,
+        "renamed_columns": 0,
+        "mismatch": 22,
+        "error": 0
+      },
+      "error_taxonomy": {},
+      "unresolved_names": []
+    },
+    {
+      "model": "keyword-stub",
+      "execution_rate": 1.0,
+      "strict_accuracy": 0.0,
+      "semantic_accuracy": 0.1818,
+      "grades": {
+        "exact": 0,
+        "unordered": 0,
+        "extra_columns": 4,
+        "renamed_columns": 0,
+        "mismatch": 18,
+        "error": 0
+      },
+      "error_taxonomy": {},
+      "unresolved_names": []
+    },
+    {
+      "model": "qwen2.5:14b-instruct (schema-blind)",
+      "execution_rate": 0.0909,
+      "strict_accuracy": 0.0,
+      "semantic_accuracy": 0.0455,
+      "grades": {
+        "exact": 0,
+        "unordered": 0,
+        "extra_columns": 0,
+        "renamed_columns": 1,
+        "mismatch": 1,
+        "error": 20
+      },
+      "error_taxonomy": {
+        "unknown_column": 14,
+        "syntax": 4,
+        "join_structure": 1,
+        "generation_timeout": 1
+      },
+      "unresolved_names": [
+        [
+          "TargetAccount",
+          1
+        ],
+        [
+          "countryOrRegion",
+          1
+        ],
+        [
+          "DestinationIp",
+          1
+        ],
+        [
+          "OperationName",
+          1
+        ],
+        [
+          "userPrincipalName",
+          1
+        ],
+        [
+          "DeviceNetworkID",
+          1
+        ],
+        [
+          "AccountName",
+          1
+        ],
+        [
+          "IpAddress",
+          1
+        ],
+        [
+          "ComputerName",
+          1
+        ],
+        [
+          "risk_level_aggregated",
+          1
+        ]
+      ]
+    },
+    {
+      "model": "qwen2.5:14b-instruct (schema-aware)",
+      "execution_rate": 0.6818,
+      "strict_accuracy": 0.0909,
+      "semantic_accuracy": 0.4091,
+      "grades": {
+        "exact": 2,
+        "unordered": 0,
+        "extra_columns": 3,
+        "renamed_columns": 4,
+        "mismatch": 6,
+        "error": 7
+      },
+      "error_taxonomy": {
+        "semantic_other": 3,
+        "syntax": 3,
+        "unknown_column": 1
+      },
+      "unresolved_names": [
+        [
+          "IpAddress",
+          1
+        ]
+      ]
+    }
+  ]
+}

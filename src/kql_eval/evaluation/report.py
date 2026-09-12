@@ -13,8 +13,11 @@ problems with three different fixes.
 
 from __future__ import annotations
 
+from collections import Counter
+
 from pydantic import BaseModel
 
+from kql_eval.evaluation.errors import DESCRIPTIONS, ErrorKind
 from kql_eval.evaluation.scoring import CREDITED, Grade, ItemScore
 
 
@@ -84,6 +87,25 @@ class EvalReport(BaseModel):
             for name, group in sorted(categories.items())
         ]
 
+    def error_taxonomy(self) -> dict[str, int]:
+        """Count failed items by root cause, most common first.
+
+        Separating unknown_column from syntax is the point: the first says the
+        model wrote good KQL against a schema it could not see, the second says
+        it cannot write KQL. Only one of those is fixed by a better prompt.
+        """
+        counts = Counter(
+            s.error_kind.value for s in self.scores if s.error_kind is not None
+        )
+        return dict(counts.most_common())
+
+    def top_unresolved_names(self, limit: int = 10) -> list[tuple[str, int]]:
+        """Identifiers the engine could not resolve, most frequent first."""
+        names = Counter(
+            s.unresolved_name for s in self.scores if s.unresolved_name
+        )
+        return names.most_common(limit)
+
     def failures(self) -> list[ItemScore]:
         return [s for s in self.scores if s.grade not in CREDITED]
 
@@ -106,5 +128,19 @@ class EvalReport(BaseModel):
             lines.append(
                 f"  {row.category:<22} {row.items:>3} "
                 f"{row.strict_accuracy:>8.1%} {row.semantic_accuracy:>9.1%}"
+            )
+
+        taxonomy = self.error_taxonomy()
+        if taxonomy:
+            lines += ["", f"  {'failure cause':<22} {'n':>3}  why"]
+            for kind, count in taxonomy.items():
+                why = DESCRIPTIONS.get(ErrorKind(kind), "")
+                lines.append(f"  {kind:<22} {count:>3}  {why}")
+
+        invented = self.top_unresolved_names(8)
+        if invented:
+            lines += ["", "  names the engine could not resolve:"]
+            lines.append(
+                "    " + ", ".join(f"{n} x{c}" if c > 1 else n for n, c in invented)
             )
         return "\n".join(lines)

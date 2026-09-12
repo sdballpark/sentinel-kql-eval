@@ -24,6 +24,13 @@ from typing import Any
 from pydantic import BaseModel
 
 from kql_eval.corpus.schema import CorpusItem
+from kql_eval.evaluation.errors import (
+    ErrorKind,
+    classify_error,
+)
+from kql_eval.evaluation.errors import (
+    unresolved_name as _unresolved_name,
+)
 
 
 class Grade(StrEnum):
@@ -130,6 +137,13 @@ class ItemScore(BaseModel):
     expected_row_count: int
     actual_row_count: int | None = None
     error: str | None = None
+    #: The query that produced this score, kept so a run artifact can be
+    #: audited without regenerating it.
+    generated_kql: str | None = None
+    #: Root cause bucket for `error`, filled in automatically.
+    error_kind: ErrorKind | None = None
+    #: The identifier the engine could not resolve, when it named one.
+    unresolved_name: str | None = None
 
     @property
     def credited(self) -> bool:
@@ -140,6 +154,7 @@ def score_item(
     item: CorpusItem,
     actual: list[dict[str, Any]] | None,
     error: str | None = None,
+    generated_kql: str | None = None,
 ) -> ItemScore:
     """Score one generated query's result against its corpus item.
 
@@ -148,12 +163,16 @@ def score_item(
     and collapsing the two hides whether a model produces invalid KQL.
     """
     if error is not None or actual is None:
+        message = error or "no result returned"
         return ItemScore(
             item_id=item.id,
             category=item.category,
             grade=Grade.ERROR,
             expected_row_count=len(item.expected_rows),
-            error=error or "no result returned",
+            error=message,
+            generated_kql=generated_kql,
+            error_kind=classify_error(message),
+            unresolved_name=_unresolved_name(message),
         )
 
     return ItemScore(
@@ -162,4 +181,5 @@ def score_item(
         grade=grade_rows(item.expected_rows, actual),
         expected_row_count=len(item.expected_rows),
         actual_row_count=len(actual),
+        generated_kql=generated_kql,
     )

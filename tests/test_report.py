@@ -81,3 +81,73 @@ def test_render_produces_a_summary():
     assert "test-model" in out
     assert "strict accuracy" in out
     assert "aggregation" in out
+
+
+# --- error taxonomy ---------------------------------------------------------
+
+
+def _error_score(item_id: str, error: str) -> ItemScore:
+    from kql_eval.corpus.schema import CorpusItem
+    from kql_eval.evaluation.scoring import score_item
+
+    item = CorpusItem(
+        id=item_id,
+        question="q",
+        category="aggregation",
+        tables=["SecurityEvent"],
+        reference_kql="SecurityEvent | count",
+        expected_rows=[{"Count": 1}],
+    )
+    return score_item(item, None, error=error)
+
+
+UNKNOWN_COLUMN = (
+    "Semantic error: SEM0100: 'where' operator: Failed to resolve column or "
+    "scalar expression named 'TargetAccount'"
+)
+SYNTAX = "Syntax error: SYN0002: Query operator expected"
+
+
+def test_taxonomy_separates_unknown_column_from_syntax():
+    report = _report(
+        _error_score("a", UNKNOWN_COLUMN),
+        _error_score("b", UNKNOWN_COLUMN),
+        _error_score("c", SYNTAX),
+    )
+    taxonomy = report.error_taxonomy()
+    assert taxonomy["unknown_column"] == 2
+    assert taxonomy["syntax"] == 1
+
+
+def test_taxonomy_is_empty_when_nothing_errored():
+    assert _report(_score("a", "aggregation", Grade.EXACT)).error_taxonomy() == {}
+
+
+def test_taxonomy_is_ordered_most_common_first():
+    report = _report(
+        _error_score("a", SYNTAX),
+        _error_score("b", UNKNOWN_COLUMN),
+        _error_score("c", UNKNOWN_COLUMN),
+    )
+    assert next(iter(report.error_taxonomy())) == "unknown_column"
+
+
+def test_unresolved_names_are_collected_and_counted():
+    report = _report(
+        _error_score("a", UNKNOWN_COLUMN),
+        _error_score("b", UNKNOWN_COLUMN),
+        _error_score("c", SYNTAX),
+    )
+    assert report.top_unresolved_names() == [("TargetAccount", 2)]
+
+
+def test_render_shows_taxonomy_when_errors_exist():
+    out = _report(_error_score("a", UNKNOWN_COLUMN)).render()
+    assert "failure cause" in out
+    assert "unknown_column" in out
+    assert "TargetAccount" in out
+
+
+def test_render_omits_taxonomy_when_clean():
+    out = _report(_score("a", "aggregation", Grade.EXACT)).render()
+    assert "failure cause" not in out

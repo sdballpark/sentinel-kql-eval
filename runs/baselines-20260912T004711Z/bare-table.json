@@ -1,0 +1,248 @@
+{
+  "model": "bare-table",
+  "corpus_version": "1.0.0",
+  "scores": [
+    {
+      "item_id": "ft-001-failed-logons-sept-07",
+      "category": "filtering_and_time",
+      "grade": "mismatch",
+      "expected_row_count": 7,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SecurityEvent",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "ft-002-signins-outside-us",
+      "category": "filtering_and_time",
+      "grade": "mismatch",
+      "expected_row_count": 10,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SigninLogs",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "ft-003-connections-to-known-bad-ip",
+      "category": "filtering_and_time",
+      "grade": "mismatch",
+      "expected_row_count": 7,
+      "actual_row_count": 16,
+      "error": null,
+      "generated_kql": "DeviceNetworkEvents",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "ft-004-failed-azure-operations",
+      "category": "filtering_and_time",
+      "grade": "mismatch",
+      "expected_row_count": 3,
+      "actual_row_count": 14,
+      "error": null,
+      "generated_kql": "AzureActivity",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "ft-005-web01-early-morning-window",
+      "category": "filtering_and_time",
+      "grade": "mismatch",
+      "expected_row_count": 7,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SecurityEvent",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-001-failed-logons-by-source-ip",
+      "category": "aggregation",
+      "grade": "mismatch",
+      "expected_row_count": 3,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SecurityEvent",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-002-signin-outcome-by-user",
+      "category": "aggregation",
+      "grade": "mismatch",
+      "expected_row_count": 5,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SigninLogs",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-003-distinct-destinations-per-device",
+      "category": "aggregation",
+      "grade": "mismatch",
+      "expected_row_count": 4,
+      "actual_row_count": 16,
+      "error": null,
+      "generated_kql": "DeviceNetworkEvents",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-004-azure-activity-per-caller",
+      "category": "aggregation",
+      "grade": "mismatch",
+      "expected_row_count": 5,
+      "actual_row_count": 14,
+      "error": null,
+      "generated_kql": "AzureActivity",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-005-failed-logons-hourly",
+      "category": "aggregation",
+      "grade": "mismatch",
+      "expected_row_count": 4,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SecurityEvent",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "join-001-ip-overlap-windows-and-entra",
+      "category": "join_and_correlation",
+      "grade": "mismatch",
+      "expected_row_count": 1,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SecurityEvent",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "join-002-bad-ip-devices-encoded-powershell",
+      "category": "join_and_correlation",
+      "grade": "mismatch",
+      "expected_row_count": 2,
+      "actual_row_count": 16,
+      "error": null,
+      "generated_kql": "DeviceNetworkEvents",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "join-003-foreign-signin-to-azure-control-plane",
+      "category": "join_and_correlation",
+      "grade": "mismatch",
+      "expected_row_count": 2,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SigninLogs",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "join-004-host-name-normalization",
+      "category": "join_and_correlation",
+      "grade": "mismatch",
+      "expected_row_count": 3,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SecurityEvent",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-001-password-spray-then-success",
+      "category": "detection_logic",
+      "grade": "mismatch",
+      "expected_row_count": 1,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SecurityEvent",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-002-risky-successful-signin",
+      "category": "detection_logic",
+      "grade": "mismatch",
+      "expected_row_count": 2,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SigninLogs",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-003-encoded-powershell",
+      "category": "detection_logic",
+      "grade": "mismatch",
+      "expected_row_count": 2,
+      "actual_row_count": 16,
+      "error": null,
+      "generated_kql": "DeviceProcessEvents",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-004-multi-country-signins",
+      "category": "detection_logic",
+      "grade": "mismatch",
+      "expected_row_count": 2,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SigninLogs",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-005-repeated-outbound-beacon",
+      "category": "detection_logic",
+      "grade": "mismatch",
+      "expected_row_count": 1,
+      "actual_row_count": 16,
+      "error": null,
+      "generated_kql": "DeviceNetworkEvents",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "schema-001-event-id-inventory",
+      "category": "schema_navigation",
+      "grade": "mismatch",
+      "expected_row_count": 5,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SecurityEvent",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "schema-002-caller-resource-group-pairs",
+      "category": "schema_navigation",
+      "grade": "mismatch",
+      "expected_row_count": 7,
+      "actual_row_count": 14,
+      "error": null,
+      "generated_kql": "AzureActivity",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "schema-003-signin-app-inventory",
+      "category": "schema_navigation",
+      "grade": "mismatch",
+      "expected_row_count": 5,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SigninLogs",
+      "error_kind": null,
+      "unresolved_name": null
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "model": "qwen2.5:14b-instruct (schema-blind)",
+  "corpus_version": "1.0.0",
+  "scores": [
+    {
+      "item_id": "ft-001-failed-logons-sept-07",
+      "category": "filtering_and_time",
+      "grade": "error",
+      "expected_row_count": 7,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'project' operator: Failed to resolve scalar expression named 'TargetAccount'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:47:18.7592023Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;8eb5328b-ebbd-46b4-835f-2f7aee71e707\",\n        ",
+      "generated_kql": "SecurityEvent | where TimeGenerated == datetime(2026-09-07) and EventID == 4625 | project TimeGenerated, Computer, Account = TargetAccount, SourceIP = IPAddress",
+      "error_kind": "unknown_column",
+      "unresolved_name": "TargetAccount"
+    },
+    {
+      "item_id": "ft-002-signins-outside-us",
+      "category": "filtering_and_time",
+      "grade": "error",
+      "expected_row_count": 10,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'where' operator: Failed to resolve column or scalar expression named 'countryOrRegion'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:47:19.3703358Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;0ffedfd2-ca99-446e-a97c-c849de80b734\"",
+      "generated_kql": "SigninLogs\n| where countryOrRegion != \"United States\"\n| order by signInTime desc",
+      "error_kind": "unknown_column",
+      "unresolved_name": "countryOrRegion"
+    },
+    {
+      "item_id": "ft-003-connections-to-known-bad-ip",
+      "category": "filtering_and_time",
+      "grade": "error",
+      "expected_row_count": 7,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'where' operator: Failed to resolve column or scalar expression named 'DestinationIp'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:47:21.1019089Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;8bfe1128-96af-426e-b750-26820c324af5\",\n",
+      "generated_kql": "DeviceNetworkEvents\n| where DestinationIp == \"45.133.1.88\"\n| order by TimeGenerated asc\n| project TimeGenerated, DeviceNetworkEventId, InitiatingProcessId, InitiatingProcessUser, InitiatingProcessPath, DestinationIp, DestinationPort, Protocol, ProcessId, Account, Direction",
+      "error_kind": "unknown_column",
+      "unresolved_name": "DestinationIp"
+    },
+    {
+      "item_id": "ft-004-failed-azure-operations",
+      "category": "filtering_and_time",
+      "grade": "error",
+      "expected_row_count": 3,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'where' operator: Failed to resolve scalar expression named 'OperationName'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:47:22.5452647Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;1399a742-fc5e-43f3-a497-eadad8d0c024\",\n          ",
+      "generated_kql": "AzureActivity\n| where OperationName startswith \"Microsoft.Authorization\" or OperationName startswith \"Microsoft.Resources\"\n| where ActivityStatus == \"Failed\"\n| project TimeGenerated, ActivityStatus, OperationName, InitiatingProcessUser, ResourceGroups = split(ImpactScope, ',')",
+      "error_kind": "unknown_column",
+      "unresolved_name": "OperationName"
+    },
+    {
+      "item_id": "ft-005-web01-early-morning-window",
+      "category": "filtering_and_time",
+      "grade": "mismatch",
+      "expected_row_count": 7,
+      "actual_row_count": 0,
+      "error": null,
+      "generated_kql": "SecurityEvent\n| where Computer == \"WEB01\" and TimeGenerated >= ago(1d) and TimeGenerated < datetime(2026-09-07T04:00:00Z)",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-001-failed-logons-by-source-ip",
+      "category": "aggregation",
+      "grade": "error",
+      "expected_row_count": 3,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Syntax error: SYN0002: Expected: , [line:position=3:75]\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:47:24.9758284Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;7c32b726-75fc-4fa6-87aa-cfddd14dfde1\",\n            \"activityId\": \"5adee51f-e3f1-46f2-9ed7-1f74",
+      "generated_kql": "SecurityEvent\n| where EventID == 4625\n| summarize FailedLogons = count() by SourceIP = tostring(AdditionalFields@bin.IPAddress)  \n| top 10 by FailedLogons desc",
+      "error_kind": "syntax",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-002-signin-outcome-by-user",
+      "category": "aggregation",
+      "grade": "error",
+      "expected_row_count": 5,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'summarize' operator: Failed to resolve scalar expression named 'userPrincipalName'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:47:25.8029244Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;2c4f6c39-59ee-42b8-892a-2f255a1dc0cb\",\n  ",
+      "generated_kql": "SigninLogs\n| summarize successfulCount = countif(status == \"success\"), failedCount = countif(status == \"failed\") by userPrincipalName",
+      "error_kind": "unknown_column",
+      "unresolved_name": "userPrincipalName"
+    },
+    {
+      "item_id": "agg-003-distinct-destinations-per-device",
+      "category": "aggregation",
+      "grade": "error",
+      "expected_row_count": 4,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'summarize' operator: Failed to resolve scalar expression named 'DeviceNetworkID'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:47:26.5203344Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;fd8c387d-4aea-470c-b00f-6f850f1eb338\",\n    ",
+      "generated_kql": "DeviceNetworkEvents\n| summarize RemoteIPCount = dcount(RemoteIP) , TotalConnections = count() by DeviceNetworkID",
+      "error_kind": "unknown_column",
+      "unresolved_name": "DeviceNetworkID"
+    },
+    {
+      "item_id": "agg-004-azure-activity-per-caller",
+      "category": "aggregation",
+      "grade": "error",
+      "expected_row_count": 5,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Syntax error: SYN0002: The incomplete fragment is unexpected. [line:position=1:16]\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:47:28.1090324Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;b471344f-1991-4172-be21-b7e8f6b74476\",\n            \"activityId\": \"f",
+      "generated_kql": "OperationCount = AzureActivity\n| summarize aggs = make_bag(operationName) by Caller\n| extend operations = array_keys(aggs)\n| summarize FirstSeen = min(TimeGenerated), LastSeen = max(TimeGenerated), OperationCount = dcount(operationName) by Caller\n| order by OperationCount desc",
+      "error_kind": "syntax",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-005-failed-logons-hourly",
+      "category": "aggregation",
+      "grade": "error",
+      "expected_row_count": 4,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'summarize' operator: Failed to resolve scalar expression named 'AccountName'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:47:28.9935572Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;8ff82476-8b91-4bc0-86a0-47fcfa633628\",\n        ",
+      "generated_kql": "SecurityEvent\n| where EventID == 4625\n| summarize FailedLogons = dcount(AccountName), bin(TimeGenerated, 1h)",
+      "error_kind": "unknown_column",
+      "unresolved_name": "AccountName"
+    },
+    {
+      "item_id": "join-001-ip-overlap-windows-and-entra",
+      "category": "join_and_correlation",
+      "grade": "error",
+      "expected_row_count": 1,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'summarize' operator: Failed to resolve scalar expression named 'IpAddress'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:47:32.0045407Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;436b1242-3f5a-4cf0-adb1-bba78254a922\",\n          ",
+      "generated_kql": "SecurityEvent\n| where EventID == 4625 and TimeGenerated >= ago(7d)\n| summarize FailedLogons=dcount(tostring(IpAddress)) by IpAddress\n| join (\n    SigninLogs\n    | where ResultType == \"Failure\" and TimeGenerated >= ago(7d)\n    | summarize FailedSignins=dcount(tostring(IpAddress)) by IpAddress\n) on IpAddress\n| where FailedLogons > 0 and FailedSignins > 0\n| project IpAddress, FailedLogons, FailedSignins",
+      "error_kind": "unknown_column",
+      "unresolved_name": "IpAddress"
+    },
+    {
+      "item_id": "join-002-bad-ip-devices-encoded-powershell",
+      "category": "join_and_correlation",
+      "grade": "error",
+      "expected_row_count": 2,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0400: join: Invalid entities used as join attributes. When using equality expressions, entities should be used by specifying its source $left or $right.\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:47:35.1685370Z\",\n            \"serviceAlias\": null,\n            \"clientReq",
+      "generated_kql": "DeviceNetworkEvents\n| where RemoteIP == \"45.133.1.88\"\n| join kind=inner (\n    DeviceProcessEvents\n    | where ProcessCommandLine has_any (\"powershell\", \"powershell.exe\", \"pwsh\")\n    | extend EncodedCommand = extract(\"(-enc|--encodedcommand|--ep)\\\\s*(\\\\S+)\", 1, ProcessCommandLine)\n) on DeviceNetworkEvents.DeviceNetworkEventId == DeviceProcessEvents.ProcessId\n| summarize ConnectionCount = dcount(DeviceNetworkEvents.DeviceNetworkEventId) by DeviceProcessEvents.EncodedCommand",
+      "error_kind": "join_structure",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "join-003-foreign-signin-to-azure-control-plane",
+      "category": "join_and_correlation",
+      "grade": "error",
+      "expected_row_count": 2,
+      "actual_row_count": null,
+      "error": "generation failed: timed out",
+      "generated_kql": null,
+      "error_kind": "generation_timeout",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "join-004-host-name-normalization",
+      "category": "join_and_correlation",
+      "grade": "error",
+      "expected_row_count": 3,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'project' operator: Failed to resolve scalar expression named 'ComputerName'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:52:38.2532088Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;831aaa72-b757-4fa9-b944-8dcc0bb9b55f\",\n         ",
+      "generated_kql": "SecurityEvent | where EventID == 4625 | project Computer = ComputerName, ShortHostName = Computer | join kind=inner (DeviceProcessEvents | project Computer = DeviceFQDN, FQDNHostName = DeviceFQDN) on Computer | project ShortHostName, FQDNHostName",
+      "error_kind": "unknown_column",
+      "unresolved_name": "ComputerName"
+    },
+    {
+      "item_id": "det-001-password-spray-then-success",
+      "category": "detection_logic",
+      "grade": "error",
+      "expected_row_count": 1,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Syntax error: SYN0002: Missing expression: If the keyword 'first' is intended to be part of an expression it needs to be bracketted as ['first']. [line:position=3:46]\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:52:42.2568646Z\",\n            \"serviceAlias\": null,\n            \"clientRequestI",
+      "generated_kql": "SecurityEvent\n| where EventID == 4776 and ResultantStatus == \"0xC0000234\" // Failed logon\n| summarize FailedLogons = count(), Account = first(AccountName), SourceIP = first(IpAddress) by SourceIP, Account\n| where FailedLogons >= 5\n| join (\n    SecurityEvent\n    | where EventID == 4624 and IpAddress in~ (SourceIP) and AccountName in~ (Account) // Successful logon\n) on $left.Account == $right.AccountName and $left.SourceIP == $right.IpAddress\n| project FailedLogons, Account, SourceIP, SuccessfulLogon = true",
+      "error_kind": "syntax",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-002-risky-successful-signin",
+      "category": "detection_logic",
+      "grade": "error",
+      "expected_row_count": 2,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'where' operator: Failed to resolve column or scalar expression named 'risk_level_aggregated'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:52:42.8726725Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;f41e8f5e-5be5-471c-8d36-cdfa1dc",
+      "generated_kql": "SigninLogs\n| where risk_level_aggregated == \"high\" and status == \"success\"",
+      "error_kind": "unknown_column",
+      "unresolved_name": "risk_level_aggregated"
+    },
+    {
+      "item_id": "det-003-encoded-powershell",
+      "category": "detection_logic",
+      "grade": "error",
+      "expected_row_count": 2,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'where' operator: Failed to resolve column or scalar expression named 'ParentProcessName'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:52:43.4668134Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;12240e5c-b304-4dd9-9d62-e17c8f38552",
+      "generated_kql": "DeviceProcessEvents\n| where ParentProcessName == \"powershell\" and CommandLine has \"-enc\"",
+      "error_kind": "unknown_column",
+      "unresolved_name": "ParentProcessName"
+    },
+    {
+      "item_id": "det-004-multi-country-signins",
+      "category": "detection_logic",
+      "grade": "error",
+      "expected_row_count": 2,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0139: Failed to resolve expression 'signInStatus.messages.code'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:52:44.4513077Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;f9dd3f21-0e18-437f-814f-81a9814ce5ad\",\n            \"activityId\": \"8",
+      "generated_kql": "SigninLogs\n| where signInStatus.messages.code == \"Success\"\n| summarize DDC = dcount(country) by accountName\n| where DDC > 1",
+      "error_kind": "unknown_column",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-005-repeated-outbound-beacon",
+      "category": "detection_logic",
+      "grade": "error",
+      "expected_row_count": 1,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'where' operator: Failed to resolve column or scalar expression named 'Direction'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:52:45.8422742Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;233b3ad0-203e-49b5-8ac6-b98d67bf7992\",\n    ",
+      "generated_kql": "DeviceNetworkEvents\n| where Direction == \"Outbound\" and Protocol == \"TCP\" and ResultType == \"Success\"\n| summarize ConnectionCount = count() by SourceIP, DestinationIP, DestinationPort\n| where ConnectionCount >= 3",
+      "error_kind": "unknown_column",
+      "unresolved_name": "Direction"
+    },
+    {
+      "item_id": "schema-001-event-id-inventory",
+      "category": "schema_navigation",
+      "grade": "renamed_columns",
+      "expected_row_count": 5,
+      "actual_row_count": 5,
+      "error": null,
+      "generated_kql": "SecurityEvent\n| summarize dcount(Computer), event_count = count() by Activity, EventID",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "schema-002-caller-resource-group-pairs",
+      "category": "schema_navigation",
+      "grade": "error",
+      "expected_row_count": 7,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Syntax error: SYN0002: Expected: ; [line:position=1:10]\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:52:48.2203786Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;64f73d82-d675-42f0-82d9-5f3b294c2262\",\n            \"activityId\": \"391067f2-740e-4141-aca8-dc70",
+      "generated_kql": "distinct AzureActivity | project distinctCaller = tostring(Caller), distinctResourceGroup = tostring(ResourceGroup) | summarize distinctPairs = dcount(duplicitize_array_add(duplicitize_array_multiply(tostring(distinctCaller), tostring(distinctResourceGroup)))) by tostring(distinctCaller), tostring(distinctResourceGroup)",
+      "error_kind": "syntax",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "schema-003-signin-app-inventory",
+      "category": "schema_navigation",
+      "grade": "error",
+      "expected_row_count": 5,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'summarize' operator: Failed to resolve scalar expression named 'ClientType'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:52:49.1203464Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;0ce061df-ceda-40f2-99d2-650741d99a67\",\n         ",
+      "generated_kql": "SigninLogs\n| summarize signInsCount = dcount(TimeGenerated), distinctUsersCount = dcount(UserPrincipalName) by AppDisplayName, ClientType",
+      "error_kind": "unknown_column",
+      "unresolved_name": "ClientType"
+    }
+  ]
+}

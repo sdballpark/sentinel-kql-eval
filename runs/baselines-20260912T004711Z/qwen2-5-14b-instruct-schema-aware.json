@@ -1,0 +1,248 @@
+{
+  "model": "qwen2.5:14b-instruct (schema-aware)",
+  "corpus_version": "1.0.0",
+  "scores": [
+    {
+      "item_id": "ft-001-failed-logons-sept-07",
+      "category": "filtering_and_time",
+      "grade": "exact",
+      "expected_row_count": 7,
+      "actual_row_count": 7,
+      "error": null,
+      "generated_kql": "SecurityEvent\n| where TimeGenerated >= datetime(2026-09-07T00:00:00Z) and TimeGenerated < datetime(2026-09-08T00:00:00Z)\n| where EventID == 4625\n| project TimeGenerated, Computer, Account, IpAddress",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "ft-002-signins-outside-us",
+      "category": "filtering_and_time",
+      "grade": "mismatch",
+      "expected_row_count": 10,
+      "actual_row_count": 18,
+      "error": null,
+      "generated_kql": "SigninLogs\n| where Location != \"United States\"\n| project TimeGenerated, UserPrincipalName, UserDisplayName, AppDisplayName, IPAddress, Location, ResultType, ResultDescription, ClientAppUsed, RiskLevelDuringSignIn\n| order by TimeGenerated desc",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "ft-003-connections-to-known-bad-ip",
+      "category": "filtering_and_time",
+      "grade": "extra_columns",
+      "expected_row_count": 7,
+      "actual_row_count": 7,
+      "error": null,
+      "generated_kql": "DeviceNetworkEvents\n| where RemoteIP == \"45.133.1.88\"\n| project TimeGenerated, DeviceName, ActionType, RemoteIP, RemotePort, RemoteUrl, Protocol, InitiatingProcessFileName, InitiatingProcessAccountName\n| order by TimeGenerated asc",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "ft-004-failed-azure-operations",
+      "category": "filtering_and_time",
+      "grade": "mismatch",
+      "expected_row_count": 3,
+      "actual_row_count": 0,
+      "error": null,
+      "generated_kql": "AzureActivity\n| where ActivityStatusValue == \"Failed\" and OperationNameValue startswith \"Microsoft\" and CategoryValue == \"Admin\"\n| project TimeGenerated, Caller, OperationNameValue, CallerIpAddress, SubscriptionId",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "ft-005-web01-early-morning-window",
+      "category": "filtering_and_time",
+      "grade": "extra_columns",
+      "expected_row_count": 7,
+      "actual_row_count": 7,
+      "error": null,
+      "generated_kql": "SecurityEvent\n| where Computer == \"WEB01\" and TimeGenerated >= datetime(2026-09-07T00:00:00Z) and TimeGenerated < datetime(2026-09-07T04:00:00Z)",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-001-failed-logons-by-source-ip",
+      "category": "aggregation",
+      "grade": "exact",
+      "expected_row_count": 3,
+      "actual_row_count": 3,
+      "error": null,
+      "generated_kql": "SecurityEvent\n| where EventID == 4625\n| summarize FailedLogons = count() by IpAddress\n| order by FailedLogons desc",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-002-signin-outcome-by-user",
+      "category": "aggregation",
+      "grade": "mismatch",
+      "expected_row_count": 5,
+      "actual_row_count": 5,
+      "error": null,
+      "generated_kql": "SigninLogs\n| summarize successfulCount = countif(ResultType == \"Success\"), failedCount = countif(ResultType == \"Failure\") by UserPrincipalName",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-003-distinct-destinations-per-device",
+      "category": "aggregation",
+      "grade": "renamed_columns",
+      "expected_row_count": 4,
+      "actual_row_count": 4,
+      "error": null,
+      "generated_kql": "DeviceNetworkEvents\n| summarize DistinctIPs = dcount(RemoteIP), TotalConnections = count() by DeviceName",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-004-azure-activity-per-caller",
+      "category": "aggregation",
+      "grade": "renamed_columns",
+      "expected_row_count": 5,
+      "actual_row_count": 5,
+      "error": null,
+      "generated_kql": "AzureActivity\n| summarize FirstActivityTime = min(TimeGenerated), LastActivityTime = max(TimeGenerated), ActivityCount = dcount(OperationNameValue) by Caller\n| order by ActivityCount desc",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "agg-005-failed-logons-hourly",
+      "category": "aggregation",
+      "grade": "renamed_columns",
+      "expected_row_count": 4,
+      "actual_row_count": 4,
+      "error": null,
+      "generated_kql": "SecurityEvent\n| where EventID == 4625\n| summarize FailedLogons = count() by bin(TimeGenerated, 1h)",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "join-001-ip-overlap-windows-and-entra",
+      "category": "join_and_correlation",
+      "grade": "error",
+      "expected_row_count": 1,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0100: 'summarize' operator: Failed to resolve scalar expression named 'IpAddress'\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:53:05.0995657Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;56194ece-f167-4cbe-bd19-7f1545fa0e8c\",\n          ",
+      "generated_kql": "SecurityEvent\n| where EventID == 4625 and LogonType == 3 and AccountType == \"User\"\n| summarize failedLogons = count(), anyIP = any(IpAddress) by IpAddress\n| join (\n    SigninLogs\n    | where ResultType == \"Failure\"\n    | summarize failedSignins = count(), anyIP = any(IPAddress) by IPAddress\n) on IpAddress\n| project IpAddress, failedLogons, failedSignins",
+      "error_kind": "unknown_column",
+      "unresolved_name": "IpAddress"
+    },
+    {
+      "item_id": "join-002-bad-ip-devices-encoded-powershell",
+      "category": "join_and_correlation",
+      "grade": "error",
+      "expected_row_count": 2,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.RelopSemanticException\",\n        \"@message\": \"Relop semantic error: SEM0031: extract(): argument 2 must be a constant long value\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:53:09.3432868Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;d99f546e-5df5-4b74-91c9-fcff4d40a915\",\n            \"activityId\": \"bd55cbe9-f62b-4029-ab63-0f0fdaa0545e\",\n        ",
+      "generated_kql": "DeviceNetworkEvents\n| where RemoteIP == \"45.133.1.88\"\n| join kind=inner (\n    DeviceProcessEvents\n    | where ProcessCommandLine has_any (\"powershell\", \"pwsh\")\n    | extend EncodedCommand = extract(\"(-enc| -EncodedCommand )(?<encodedCommand>.*?) \", \"encodedCommand\", ProcessCommandLine, 1)\n    | project DeviceName, InitiatingProcessFileName, InitiatingProcessAccountName, EncodedCommand\n) on DeviceName, InitiatingProcessFileName, InitiatingProcessAccountName\n| summarize ConnectionCount = dcount(RemoteIP) by DeviceName, RemoteIP, RemotePort, Protocol, InitiatingProcessFileName, InitiatingProcessAccountName, EncodedCommand",
+      "error_kind": "semantic_other",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "join-003-foreign-signin-to-azure-control-plane",
+      "category": "join_and_correlation",
+      "grade": "error",
+      "expected_row_count": 2,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Syntax error: SYN0002: Expected: ; [line:position=2:46]\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:53:12.1167878Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;1a7d10fa-26b8-4db5-a050-c5b6ac9a7745\",\n            \"activityId\": \"99e7c5be-c4ce-4fc1-baf2-62db",
+      "generated_kql": "SigninLogs\n| where ResultType == \"Success\" and Location ne \"US\"\n| project TimeGenerated, IPAddress, UserPrincipalName\n| join kind=inner (\n    AzureActivity\n    | where ActivityStatusValue == \"Succeeded\" and CategoryValue == \"Management\" and CallerIpAddress != \"\"\n    | project TimeGenerated, CallerIpAddress, Caller\n) on $left.IPAddress == $right.CallerIpAddress\n| where TimeGenerated1 > TimeGenerated\n| distinct UserPrincipalName, IPAddress",
+      "error_kind": "syntax",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "join-004-host-name-normalization",
+      "category": "join_and_correlation",
+      "grade": "error",
+      "expected_row_count": 3,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0001: Arithmetic expression cannot be carried-out between StringBuffer and StringBuffer\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:53:15.1877713Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;ef5a74e0-2a35-4a38-af5a-c2ccea9f6b05\",\n    ",
+      "generated_kql": "SecurityEvent\n| where EventID == 4625 and AccountType == \"User\"\n| extend ComputerFQDN = Computer + \".\" + FQDN() // Assuming FQDN() is a function to get the FQDN, otherwise join with DeviceProcessEvents on Computer\n| join kind=inner (DeviceProcessEvents) on $left.ComputerFQDN == $right.DeviceName\n| project SecurityEvent.Computer, SecurityEvent.TimeGenerated, SecurityEvent.Account, DeviceProcessEvents.TimeGenerated, DeviceProcessEvents.FileName",
+      "error_kind": "semantic_other",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-001-password-spray-then-success",
+      "category": "detection_logic",
+      "grade": "error",
+      "expected_row_count": 1,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Semantic error: SEM0001: Invalid summarize aggregation expressions usage: summarize must have at least one aggregate function\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:53:18.5846878Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;15b856a8-18d2-4196-ad92-",
+      "generated_kql": "SecurityEvent\n| where EventID == 4625 and LogonType == 3\n| summarize FailedLogons = count(), FirstTime = min(TimeGenerated) by IpAddress, Account\n| join (\n    SecurityEvent\n    | where EventID == 4624 and LogonType == 3\n    | summarize SuccessLogon = 1 by IpAddress, Account, TimeGenerated\n) on IpAddress, Account\n| where FailedLogons >= 5\n| project IpAddress, Account, FirstTime, SuccessLogon, TimeGenerated\n| order by FailedLogons desc",
+      "error_kind": "semantic_other",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-002-risky-successful-signin",
+      "category": "detection_logic",
+      "grade": "mismatch",
+      "expected_row_count": 2,
+      "actual_row_count": 0,
+      "error": null,
+      "generated_kql": "SigninLogs\n| where ResultType == \"Success\" and RiskLevelDuringSignIn == \"High\"",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-003-encoded-powershell",
+      "category": "detection_logic",
+      "grade": "extra_columns",
+      "expected_row_count": 2,
+      "actual_row_count": 2,
+      "error": null,
+      "generated_kql": "DeviceProcessEvents\n| where ProcessCommandLine has \" -enc \" and FileName == \"powershell.exe\"",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-004-multi-country-signins",
+      "category": "detection_logic",
+      "grade": "mismatch",
+      "expected_row_count": 2,
+      "actual_row_count": 0,
+      "error": null,
+      "generated_kql": "SigninLogs\n| where ResultType == \"Success\"\n| summarize CountryCount = dcount(Location) by UserPrincipalName\n| where CountryCount > 1\n| project UserPrincipalName, CountryCount",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "det-005-repeated-outbound-beacon",
+      "category": "detection_logic",
+      "grade": "mismatch",
+      "expected_row_count": 1,
+      "actual_row_count": 0,
+      "error": null,
+      "generated_kql": "DeviceNetworkEvents\n| where ActionType == \"Success\"\n| summarize Count = count(), DeviceCount = dcount(DeviceName) by RemoteIP, RemotePort, Protocol\n| where DeviceCount >= 3\n| project RemoteIP, RemotePort, Protocol, Count, DeviceCount",
+      "error_kind": null,
+      "unresolved_name": null
+    },
+    {
+      "item_id": "schema-001-event-id-inventory",
+      "category": "schema_navigation",
+      "grade": "error",
+      "expected_row_count": 5,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Syntax error: SYN0002: The incomplete fragment is unexpected. [line:position=3:40]\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:53:23.9171399Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;479ed50d-16de-4e15-86be-0e134bc39fc8\",\n            \"activityId\": \"5",
+      "generated_kql": "SecurityEvent\n| summarize dcount(Computer) by EventID, Activity\n| extend EventCount = dcount(Activity) by EventID\n| project EventID, Activity, EventCount, HostCount = dcount(Computer)",
+      "error_kind": "syntax",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "schema-002-caller-resource-group-pairs",
+      "category": "schema_navigation",
+      "grade": "error",
+      "expected_row_count": 7,
+      "actual_row_count": null,
+      "error": "HTTP 400: {\n    \"error\": {\n        \"code\": \"General_BadRequest\",\n        \"message\": \"Request is invalid and cannot be executed.\",\n        \"@type\": \"Kusto.Data.Exceptions.KustoBadRequestException\",\n        \"@message\": \"Request is invalid and cannot be processed: Syntax error: SYN0002: Expected: ; [line:position=1:10]\",\n        \"@failureCode\": 400,\n        \"@context\": {\n            \"timestamp\": \"2026-09-12T00:53:24.2055387Z\",\n            \"serviceAlias\": null,\n            \"clientRequestId\": \"unspecified;80a75ca8-dc04-4142-896c-7b4d16fa041b\",\n            \"activityId\": \"f749abe4-d45a-4a56-a274-6893",
+      "generated_kql": "distinct Caller, ResourceGroup from AzureActivity",
+      "error_kind": "syntax",
+      "unresolved_name": null
+    },
+    {
+      "item_id": "schema-003-signin-app-inventory",
+      "category": "schema_navigation",
+      "grade": "renamed_columns",
+      "expected_row_count": 5,
+      "actual_row_count": 5,
+      "error": null,
+      "generated_kql": "SigninLogs\n| summarize signIns = count(), distinctUsers = dcount(UserPrincipalName) by AppDisplayName, ClientAppUsed",
+      "error_kind": null,
+      "unresolved_name": null
+    }
+  ]
+}

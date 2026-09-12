@@ -94,7 +94,7 @@ class KustoEmulator:
             headers={"Accept": "application/json", "Content-Type": "application/json"},
         )
         if response.status_code != 200:
-            raise KustoError(f"HTTP {response.status_code}: {response.text[:800]}")
+            raise KustoError(_error_message(response))
         return response.json()
 
     def is_ready(self) -> bool:
@@ -124,6 +124,26 @@ class KustoEmulator:
 
 class KustoError(RuntimeError):
     """A query or management command the emulator rejected."""
+
+
+def _error_message(response: httpx.Response) -> str:
+    """Extract the engine's diagnostic from an error body.
+
+    Kusto buries the useful text in a nested @message field behind roughly 300
+    characters of JSON boilerplate, while the outer `message` says only that
+    the request was invalid. Storing the raw body means any truncation downstream
+    silently discards the one part that says what actually went wrong -- which
+    is exactly what defeats error classification.
+    """
+    try:
+        error = response.json().get("error", {})
+    except ValueError:
+        error = {}
+    for key in ("@message", "message"):
+        value = error.get(key)
+        if isinstance(value, str) and value.strip():
+            return f"HTTP {response.status_code}: {value}"
+    return f"HTTP {response.status_code}: {response.text[:800]}"
 
 
 def _primary_table(payload: dict[str, Any]) -> list[dict[str, Any]]:
