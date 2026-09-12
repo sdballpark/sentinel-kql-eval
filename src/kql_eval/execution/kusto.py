@@ -9,13 +9,17 @@ attributed to the query under test.
 
 from __future__ import annotations
 
+import os
 from typing import Any, Self
 
 import httpx
 
 from kql_eval.corpus.schema import FixtureTable
 
-DEFAULT_ENDPOINT = "http://localhost:8080"
+# Loopback by default: the emulator supports neither HTTPS nor Entra auth, so
+# it must never be reachable off the host. Override only for a remote cluster
+# that does authenticate.
+DEFAULT_ENDPOINT = os.environ.get("KQL_EVAL_KUSTO_ENDPOINT", "http://127.0.0.1:8080")
 DEFAULT_DATABASE = "NetDefaultDB"
 
 # Corpus ColumnType -> KQL scalar type. One-to-one, but stated explicitly so a
