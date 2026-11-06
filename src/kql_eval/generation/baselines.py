@@ -1,7 +1,7 @@
-"""Three baselines, weakest first.
+"""Two non-model floors and two model generators, weakest first.
 
-A benchmark number means nothing without a floor to compare it against. These
-three establish one:
+A benchmark number means nothing without a floor to compare it against. The
+floors and the model runs:
 
 - BareTable answers every question with the table name alone. Anything a model
   scores above this is attributable to the model rather than to the corpus
@@ -9,7 +9,10 @@ three establish one:
 - KeywordStub adds naive question-word matching and a single where clause. It
   is the "obvious script anyone would write in an afternoon" bar, and it is the
   one a language model actually has to beat to justify its cost.
-- Ollama runs a local instruct model over the same thin context.
+- OllamaGenerator runs a local instruct model over the same thin context:
+  the schema-blind run.
+- SchemaAwareOllamaGenerator runs the same model with each in-scope table's
+  columns and types added to the prompt: the schema-aware run.
 
 The keyword map below is deliberately small and general. It was written from
 security-domain vocabulary, not by reading the corpus answers -- a stub tuned

@@ -6,8 +6,10 @@ real Kusto engine with committed ground truth.
 ## The finding
 
 A 14B instruct model was run twice over the same 22 questions. Same model, same
-temperature 0 and pinned seed, same tables in scope. One variable changed:
-whether the prompt listed each table's columns and types.
+temperature 0 and pinned seed, same tables in scope. What changed was the schema:
+whether the prompt listed each table's columns and types. The schema-aware prompt
+also adds one sentence telling the model to use only the listed columns, so
+strictly the difference is that schema block plus that instruction.
 
 | | schema-blind | schema-aware |
 |---|---:|---:|
@@ -188,13 +190,17 @@ uv run python scripts/verify_corpus.py
 uv run python scripts/run_baselines.py bare-table keyword-stub
 uv run python scripts/run_baselines.py ollama-blind ollama-schema
 
-uv run pytest
+uv run pytest           # offline: no emulator or model needed
 ./scripts/emulator.sh stop
 ```
 
 Results land in `runs/<timestamp>/`, one JSON per baseline plus a `summary.json`.
 Every score carries the query that produced it, so a run can be audited without
 regenerating it.
+
+CI runs on every push: a locked install, `ruff check` and the test suite. It does
+not start the emulator or a model; those runs happen locally and are committed
+under `runs/`.
 
 Python is always invoked through `uv run`. Bare `python` does not exist on
 Ubuntu 24.04 without `python-is-python3`, and the system `python3` does not have

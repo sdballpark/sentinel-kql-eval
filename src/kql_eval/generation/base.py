@@ -1,10 +1,14 @@
 """The contract every query generator implements.
 
 Baselines and real model generators sit behind the same interface so the
-harness cannot accidentally give one of them more context than another. What a
-generator receives is deliberately thin -- the question and the names of the
-tables in scope -- because handing it column lists would turn the benchmark
-into a schema-lookup test rather than a question-understanding one.
+harness cannot accidentally give one of them more context than another. Every
+generator receives the question and the names of the tables in scope.
+
+What a generator adds on its own is the experiment. The schema-blind model
+generator works from that thin context alone; the schema-aware one also lists
+each in-scope table's columns and types in its prompt. Comparing the two is the
+headline result: most of the gap is invented column names, which the schema
+removes.
 """
 
 from __future__ import annotations
